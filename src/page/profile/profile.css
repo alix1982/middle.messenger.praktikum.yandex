@@ -1,0 +1,78 @@
+.profile {
+    display: flex;
+}
+.profile__buttonBack {
+    height: 100vh;
+    width: 5%;
+    margin: 0;
+    padding: 0 15px;
+    border: none;
+    border-left: 1px solid #EAEAEA;
+    background: #FBFBFB;
+    background-image: url(../../../static/img/addMessageIcon.svg);
+    rotate: 180deg;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+}
+.profile__buttonBack:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.profile__main {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+}
+.profile__avatar {
+    width: 40px;
+    height: 40px;
+    padding: 45px;
+    border-radius: 50%;
+    background-color: #EFEFEF;
+    background-position: center;
+}
+.profile__name {
+    margin: 20px 10px 60px;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #1E1E1E;
+}
+.profile__data {
+    width: 40%;
+    margin: 0 0 60px 0;
+}
+.profile__buttons {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.profile__button {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #EAEAEA;
+    background-color: transparent;
+    text-align: left;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    color: #3369F3;
+}
+.profile__button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    border-bottom: 1px solid #ABABAB ;
+}
+.profile__button_red {
+    color: #FF0000;
+;
+}

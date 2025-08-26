@@ -1,0 +1,26 @@
+import Handlebars from "handlebars";
+import chats from "./chats";
+import { dataChats } from "../../utils/constant";
+import { chatContent } from "./modules/chatContent/chatContent";
+
+let idChatSelected = 0;
+
+function click(e, item) {
+    idChatSelected = item.attributes.id.value;
+    let chat = dataChats.find((el) => Number(el.idChat) === Number(idChatSelected));
+
+    const chatContentElement = document.querySelector('.chats__item');
+    const template = Handlebars.compile(chatContent(idChatSelected, chat));
+    const result = template();
+    chatContentElement.innerHTML = result;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('#app');
+    const template = Handlebars.compile(chats(dataChats, idChatSelected));
+    const result = template({});
+    root.innerHTML = result;
+
+    const arrChatsElements = document.querySelectorAll('.chatPoint__button');
+    arrChatsElements.forEach((item) => item.addEventListener('click', (e) => {click(e, item)}));
+});

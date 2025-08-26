@@ -1,0 +1,9 @@
+.chatsList {
+    height: 80vh;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 14px;
+    overflow: scroll;
+    border-top: 1px solid #EAEAEA;
+}

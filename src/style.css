@@ -1,0 +1,32 @@
+
+/* общие */
+@import url(../static/fonts/Inter_Web/inter.css);
+
+/* страницы */
+/* @import url(page/home/home.css); */
+@import url(page/login/login.css);
+@import url(page/registration/registration.css);
+@import url(page/chats/chats.css);
+@import url(page/profile/profile.css);
+@import url(page/errRout404/errRout404.css);
+@import url(page/errRout500/errRout500.css);
+
+/* модули */
+@import url(modules/button/button.css);
+@import url(modules/inputForm/inputForm.css);
+@import url(modules/input/input.css);
+
+    /* модули чата */
+    @import url(page/chats/modules/chatsList/chatsList.css);
+    @import url(page/chats/modules/chatPoint/chatPoint.css);
+    @import url(page/chats/modules/chatContent/chatContent.css);
+    @import url(page/chats/modules/chatContent/chatMessage/chatMessage.css);
+
+    /* модули профиля */
+    @import url(page/profile/modules/inputProfile/inputProfile.css);
+ /*  */
+
+
+ body {
+    margin: 0;
+}

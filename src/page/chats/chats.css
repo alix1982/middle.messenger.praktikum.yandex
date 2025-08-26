@@ -1,0 +1,118 @@
+
+.chats {
+    width: 100%;
+    display: flex;
+}
+.chats__list {
+    width: 25%;
+    height: 95vh;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #EAEAEA;
+;
+}
+.chats__profile {
+    width: 100px;
+    height: 15px;
+    margin: 10px 0 10px auto;
+    border: none;
+    background-color: transparent;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: right;
+    color: #999999;
+    text-decoration: none;
+}
+.chats__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    width: 70%;
+    padding: 10px 20px;
+}
+.chats__itemText {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #999999;
+    margin: auto 0;
+}
+/* .chats__itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #EAEAEA;
+}
+.chats__itemUser {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chats__itemAvatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+.chats__itemHeading {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    color: #1E1E1E;
+}
+.chats__itemMenu {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../static/img/menuIcon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.chats__itemContent {
+
+}
+.chats__itemControl {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #EAEAEA;
+}
+.chats__itemControl > .input {
+    width: calc(100% - 30px - 10px - 20px - 10px);
+    border-radius: 30px;
+}
+.chats__itemControlButton {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../static/img/addMessageIcon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+ */
