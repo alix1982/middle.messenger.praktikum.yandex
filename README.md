@@ -14,8 +14,8 @@
   Получим папку "dist" с проектом
 
 2. роуты
-- роут с ошибкой 404: [errorRout404](https://messenger15.netlify.app/?key=error404)
-- роут с ошибкой 500: [errorRout500](https://messenger15.netlify.app/?key=error500)
+- роут с ошибкой 404: [errorRout404](https://messenger15.netlify.app?key=error404)
+- роут с ошибкой 500: [errorRout500](https://messenger15.netlify.app?key=error500)
 
 2. [домен netlify](https://messenger15.netlify.app/)
 

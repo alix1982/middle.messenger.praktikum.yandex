@@ -15,7 +15,6 @@ if (window.location.search === '?key=error404') {
     errorRout500Html()
 }
 
-
 export function setPageRender(page) {
     pageRender = page
 };
