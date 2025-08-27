@@ -12,7 +12,6 @@
 .input:focus {
     outline: none;
     border-bottom: 1px solid #1E1E1E;
-;
 }
 /* .input_error {
     font-family: Inter;
@@ -22,3 +21,4 @@
     letter-spacing: 0%;
     color: #FF2F2F;
 } */
+ 
