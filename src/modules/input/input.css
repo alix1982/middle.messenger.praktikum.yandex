@@ -6,19 +6,7 @@
     border-radius: 5px;
     background-color: #EFEFEF;
 }
-/* .input::placeholder{
-    text-align: center;
-} */
 .input:focus {
     outline: none;
     border-bottom: 1px solid #1E1E1E;
 }
-/* .input_error {
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 8px;
-    letter-spacing: 0%;
-    color: #FF2F2F;
-} */
- 
