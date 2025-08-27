@@ -1,6 +1,5 @@
 # Messenger
 
-
 1. Создание индивидуального мессенджера
 
 2. Проект на нативном js, с использованием шаблонизатора handlebars.
@@ -24,4 +23,3 @@
 2. [макет дефолтный](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1)
 
 2. Планы на будущее: подключение к серверу.
- 
