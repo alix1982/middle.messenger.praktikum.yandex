@@ -3,7 +3,6 @@ import input from "../../modules/input/input";
 import chatsList from "./modules/chatsList/chatsList";
 
 export default function (dataChats, idChatSelected) {
-    // console.log(idChatSelected)
     return `
          <section class='chats'>
             <div class='chats__list'>

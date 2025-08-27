@@ -9,14 +9,19 @@ import { registrationHtml } from "./page/registration/index.js";
 
 let pageRender = 'login';
 
+// console.log(window.location.search)
+if (window.location.search === '?key=error404') {
+    errorRout404Html()
+} else if (window.location.search === '?key=error500') {
+    errorRout500Html()
+}
+
+
 export function setPageRender(page) {
     pageRender = page
 };
 
-// console.log(pageRender);
-
 export function render() {
-    console.log(pageRender)
     if (pageRender === 'login') {
         loginHtml();
     } else if (pageRender === 'registration') {
