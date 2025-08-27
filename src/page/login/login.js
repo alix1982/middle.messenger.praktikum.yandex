@@ -11,7 +11,7 @@ export default function (loginValue, passValue) {
                     ${inputForm('Пароль', 'Неверный пароль', 'pass', 'password', `${passValue}`)}
                     ${button('Войти', 'loginButton')}
                 </form>
-                <a class='login__transitionRegistr' href='../../registration.html'>Нет аккаунта?</a>
+                <a class='login__transitionRegistr' href='../../registration'>Нет аккаунта?</a>
             </div>
         </section>
     `

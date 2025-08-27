@@ -13,7 +13,7 @@ export function profileHtml() {
         })
         document.querySelector('#profile_fixData').addEventListener("click", fixProfile);
         document.querySelector('#profile_fixPass').addEventListener("click", fixPassword);
-        document.querySelector('#profile_exit').addEventListener("click", () => {window.location.href = '../../login.html'});
+        document.querySelector('#profile_exit').addEventListener("click", () => {window.location.href = '../../login'});
     };
     function renderProfile() {
         const root = document.querySelector('#app');

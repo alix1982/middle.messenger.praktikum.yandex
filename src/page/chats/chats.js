@@ -23,7 +23,7 @@ export default function (dataChats, idChatSelected) {
     return `
          <section class='chats'>
             <div class='chats__list'>
-                <a class='chats__profile' href='../../profile.html'>Профиль &gt;</a>
+                <a class='chats__profile' href='../../profile'>Профиль &gt;</a>
                 ${input('search', 'text', '&#128269;&nbsp;Поиск ')}
                 ${chatsList(dataChats)}
             </div>

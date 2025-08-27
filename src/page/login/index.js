@@ -18,7 +18,7 @@ export function loginHtml() {
     function handleSubmitFormLogin (e) {
         e.preventDefault();
         if (dataLogin.login.trim() === '1' && dataLogin.pass.trim() === '1') {
-            window.location.href = '../../chats.html'
+            window.location.href = '../../chats'
         }
     }
 

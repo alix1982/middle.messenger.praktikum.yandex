@@ -16,7 +16,7 @@ export default function ({email, login, first_name, second_name, phone, password
                     ${inputForm('Пароль (ещё раз)', 'Пароли не совпадают', 'passwordReplay', 'text', `${passwordReplay}`)}
                     ${button('Зарегистрироваться')}
                 </form>
-                <a class='registration__transitionRegistr' href='../../index.html'>Войти</a>
+                <a class='registration__transitionRegistr' href='../../login'>Войти</a>
             </div>
         </section>
     `
