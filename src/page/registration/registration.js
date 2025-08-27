@@ -1,6 +1,4 @@
-import Handlebars from "handlebars";
 import button from "../../modules/button/button";
-// import input from "../../modules/inputForm/inputForm";
 import inputForm from "../../modules/inputForm/inputForm";
 
 export default function ({email, login, first_name, second_name, phone, password, passwordReplay }) {
@@ -19,9 +17,7 @@ export default function ({email, login, first_name, second_name, phone, password
                     ${button('Зарегистрироваться')}
                 </form>
                 <a class='registration__transitionRegistr' href='../../index.html'>Войти</a>
-    
             </div>
-         
         </section>
     `
 }

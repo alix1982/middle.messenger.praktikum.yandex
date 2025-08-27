@@ -1,9 +1,6 @@
-import input from "../../../../../modules/input/input"
-import readIcon from '../../../../../../static/img/readIcon.svg';
 
 export function chatMessage({text, myMessege, dateUnix}) {
-    // const {name} = chat;
-    // console.log(message)
+
     return `
         <li class=${myMessege ? 'chatMessage__my' : 'chatMessage__companion'}>
             <p class='chatMessage__text'>${text}</p>

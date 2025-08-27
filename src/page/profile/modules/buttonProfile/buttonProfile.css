@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* flex-direction: column; */
     border-bottom: 1px solid #EAEAEA;
     margin-top: 10px;
     gap: 10px;
@@ -30,13 +29,9 @@
     letter-spacing: 0%;
     text-align: right;
     color: #999999;
-    /* border-bottom: 1px solid #3369F3; */
 }
 .inputProfile__input:focus {
-    /* width: 100%;
-    border: none; */
     outline: none;
-    /* border-bottom: 1px solid #3369F3; */
 }
 .inputProfile__error {
     font-family: Inter;

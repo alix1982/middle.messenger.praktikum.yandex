@@ -10,10 +10,8 @@
     width: 340px;
     height: 615px;
     padding: 30px;
-    /* margin: 0 auto; */
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     border: 1px solid #000000;
     border-radius: 12px;
