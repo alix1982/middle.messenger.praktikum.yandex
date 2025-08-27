@@ -1,0 +1,19 @@
+.buttonLink {
+    width: 98%;
+    height: 37px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 11px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #3369F3;
+    margin-top: 14px;
+}
+.buttonLink:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}

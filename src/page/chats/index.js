@@ -2,6 +2,7 @@ import Handlebars from "handlebars";
 import chats from "./chats";
 import { dataChats } from "../../utils/constant";
 import { chatContent } from "./modules/chatContent/chatContent";
+import { render, setPageRender } from "../..";
 
 export function chatsHtml() {
     let idChatSelected = 0;
@@ -16,13 +17,19 @@ export function chatsHtml() {
         chatContentElement.innerHTML = result;
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const root = document.querySelector('#app');
+    // document.addEventListener('DOMContentLoaded', () => {
+        const rootChats = document.querySelector('#app');
         const template = Handlebars.compile(chats(dataChats, idChatSelected));
         const result = template({});
-        root.innerHTML = result;
+        rootChats.innerHTML = result;
 
         const arrChatsElements = document.querySelectorAll('.chatPoint__button');
+        const profileButton = document.querySelector('#profileButton');
+
         arrChatsElements.forEach((item) => item.addEventListener('click', (e) => {click(e, item)}));
-    });
+        profileButton.addEventListener('click', () => {
+            setPageRender('profile');
+            render();
+        })
+    // });
 }

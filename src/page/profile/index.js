@@ -3,6 +3,7 @@ import profile from "./profile";
 import { dataInputsDisebledProfile, dataInputsFixPassword, dataInputsFixProfile, userData } from "../../utils/constant";
 import inputProfile from "./modules/inputProfile/inputProfile";
 import button from "../../modules/button/button";
+import { render, setPageRender } from "../..";
 
 export function profileHtml() {
     let profilePage = 'main'; // main, fixData, fixPass
@@ -11,15 +12,25 @@ export function profileHtml() {
         document.querySelector('#profile__buttonBack').addEventListener("click", () => { 
             profilePage === 'main' ? history.back() : setMain();
         })
-        document.querySelector('#profile_fixData').addEventListener("click", fixProfile);
-        document.querySelector('#profile_fixPass').addEventListener("click", fixPassword);
-        document.querySelector('#profile_exit').addEventListener("click", () => {window.location.href = '../../login'});
+        // console.log(document.querySelector('#profile_fixData'))
+        if (profilePage === 'main') {
+            document.querySelector('#profile_fixData').addEventListener("click", () => {fixProfile()});
+            document.querySelector('#profile_fixPass').addEventListener("click", fixPassword);
+            // document.querySelector('#profile_exit').addEventListener("click", () => {
+            //     window.location.href = '../../login.html'}
+            // );
+            document.querySelector('#profile_exit').addEventListener('click', () => {
+                setPageRender('login');
+                render();
+            })
+        }
     };
     function renderProfile() {
-        const root = document.querySelector('#app');
+        console.log('render')
+        const rootProfile = document.querySelector('#app');
         const template = Handlebars.compile(profile(renderInput, renderButton));
         const result = template();
-        root.innerHTML = result;
+        rootProfile.innerHTML = result;
     };
 
     function setMain() {
@@ -70,7 +81,7 @@ export function profileHtml() {
         }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
+    // document.addEventListener('DOMContentLoaded', () => {
         setMain();
-    });
+    // });
 }

@@ -13,6 +13,7 @@
 
 /* модули */
 @import url(modules/button/button.css);
+@import url(modules/buttonLink/buttonLink.css);
 @import url(modules/inputForm/inputForm.css);
 @import url(modules/input/input.css);
 
