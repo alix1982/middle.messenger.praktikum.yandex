@@ -12,7 +12,6 @@ export function profileHtml() {
         document.querySelector('#profile__buttonBack').addEventListener("click", () => { 
             profilePage === 'main' ? history.back() : setMain();
         })
-        // console.log(document.querySelector('#profile_fixData'))
         if (profilePage === 'main') {
             document.querySelector('#profile_fixData').addEventListener("click", () => {fixProfile()});
             document.querySelector('#profile_fixPass').addEventListener("click", fixPassword);
@@ -26,7 +25,6 @@ export function profileHtml() {
         }
     };
     function renderProfile() {
-        console.log('render')
         const rootProfile = document.querySelector('#app');
         const template = Handlebars.compile(profile(renderInput, renderButton));
         const result = template();
