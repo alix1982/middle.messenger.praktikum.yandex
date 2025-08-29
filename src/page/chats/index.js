@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import chats from "./chats";
 import { dataChats } from "../../utils/constant";
 import { chatContent } from "./modules/chatContent/chatContent";
-import { render, setPageRender } from "../..";
+import { render, renderContentHandlebars, setPageRender } from "../..";
 
 export function chatsHtml() {
     let idChatSelected = 0;
@@ -11,17 +11,19 @@ export function chatsHtml() {
         idChatSelected = item.attributes.id.value;
         let chat = dataChats.find((el) => Number(el.idChat) === Number(idChatSelected));
 
-        const chatContentElement = document.querySelector('.chats__item');
-        const template = Handlebars.compile(chatContent(idChatSelected, chat));
-        const result = template();
-        chatContentElement.innerHTML = result;
+        renderContentHandlebars('.chats__item', chatContent(idChatSelected, chat))
+        // const chatContentElement = document.querySelector('.chats__item');
+        // const template = Handlebars.compile(chatContent(idChatSelected, chat));
+        // const result = template();
+        // chatContentElement.innerHTML = result;
     }
 
     // document.addEventListener('DOMContentLoaded', () => {
-        const rootChats = document.querySelector('#app');
-        const template = Handlebars.compile(chats(dataChats, idChatSelected));
-        const result = template({});
-        rootChats.innerHTML = result;
+        renderContentHandlebars('#app', chats(dataChats, idChatSelected))
+        // const rootChats = document.querySelector('#app');
+        // const template = Handlebars.compile(chats(dataChats, idChatSelected));
+        // const result = template({});
+        // rootChats.innerHTML = result;
 
         const arrChatsElements = document.querySelectorAll('.chatPoint__button');
         const profileButton = document.querySelector('#profileButton');

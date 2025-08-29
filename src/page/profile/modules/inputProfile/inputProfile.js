@@ -8,7 +8,7 @@ function ( {heading, name, type, placeholder, value, disabled, textError} ) {
     };
     return `
         <label class='inputProfile'>
-            <p class='inputProfile__heading'>${heading}</p>
+            <span class='inputProfile__heading'>${heading}</span>
             <input
                 class='inputProfile__input'
                 type=${type}

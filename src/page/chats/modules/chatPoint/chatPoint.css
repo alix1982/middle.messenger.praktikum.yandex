@@ -1,6 +1,6 @@
 .chatPoint {
     width: 100%;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid var(--border-color);
 }
 .chatPoint__button {
     width: 100%;
@@ -14,7 +14,7 @@
 }
 .chatPoint__button:hover {
     opacity: 1;
-    border: 1px solid #EAEAEA;
+    border: 1px solid var(--border-color);
     cursor: pointer;
     transition: opacity 0.5s linear;
 }
@@ -38,7 +38,7 @@
     font-size: 13px;
     line-height: 13px;
     letter-spacing: 0%;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
 }
 .chatPoint__content {
     margin: 0;
@@ -53,7 +53,7 @@
     line-height: 15px;
     letter-spacing: 0%;
     text-align: left;
-    color: #999999;
+    color: var(--element-color);
 }
 .chatPoint__info {
     display: flex;
@@ -71,7 +71,7 @@
     line-height: 13px;
     letter-spacing: 0%;
     text-align: right;
-    color: #999999;
+    color: var(--element-color);
 }
 .chatPoint__countMesNotRead {
     width: 20px;
@@ -81,7 +81,7 @@
     align-items: center;
     vertical-align: middle;
     margin: 0;
-    background-color: #3369F3;
+    background-color: var(--element-backgroundDark);
     border-radius: 50%;
     font-family: Inter;
     font-weight: 500;
@@ -89,7 +89,7 @@
     line-height: 12px;
     letter-spacing: 0%;
     text-align: center;
-    color: #FFFFFF;
+    color: var(--element-colorLight);
 }
 .chatPoint__scroll {
     width: 5px;

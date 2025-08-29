@@ -22,7 +22,7 @@
     line-height: 40px;
     letter-spacing: 0%;
     text-align: center;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
 }
 .errRout404__text {
     margin: 0;
@@ -32,7 +32,7 @@
     font-size: 20px;
     line-height: 20px;
     letter-spacing: 0%;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
     text-align: center;
 }
 .errRout404__transitionRegistr {
@@ -43,6 +43,6 @@
     font-size: 11px;
     line-height: 11px;
     letter-spacing: 0%;
-    color: #3369F3;
+    color: var(--element-backgroundDark);
     text-align: center;
 }

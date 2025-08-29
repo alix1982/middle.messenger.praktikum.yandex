@@ -3,7 +3,7 @@ import { transformMonth } from "../../../../utils/constant";
 import { chatMessage } from "./chatMessage/chatMessage";
 
 export function chatContent(idChat, chat) {
-    const {name, messeges} = chat;
+    const {name, messeges, avatarUser} = chat;
     const messagesSort = messeges.toSorted((a, b) => a.dateUnix - b.dateUnix);
     
     let renderMesseges = '';
@@ -17,27 +17,29 @@ export function chatContent(idChat, chat) {
             monthMessages = month;
             dateMessages = date;
             
-            renderMesseges += `<p class='chatContent__contentTime'>${dateMessages}  ${transformMonth[monthMessages]}</p>`;
+            renderMesseges += `<li class='chatContent__contentTime'>${dateMessages}  ${transformMonth[monthMessages]}</li>`;
         };
 
         return renderMesseges += chatMessage(messege)
     })
 
     return `
-        <div class='chatContent__header'>
-            <div class='chatContent__user'>
-                <img class='chatContent__avatar'/>
+        <header class='chatContent__header'>
+            <article class='chatContent__user'>
+                <img class='chatContent__avatar' src=${avatarUser} alt='аватар'/>
                 <p class='chatContent__heading'>${name}</p>
-            </div>
-            <button class='chatContent__menu'>
+            </article>
+            <button class='chatContent__menu' type='button'>
             </button>
-        </div>
+        </header>
         <ul class='chatContent__content'>
             ${renderMesseges}
         </ul>
-        <div class='chatContent__control'>
-            ${input('newMessage', 'text', 'Сообщение ')}
-            <button class='chatContent__controlButton'></button>
-        </div>
+        <footer>
+            <form class='chatContent__control'>
+                ${input('message', 'text', 'Сообщение ')}
+                <button class='chatContent__controlButton' type='submit'></button>
+            </form>
+        </footer>
     `
 }

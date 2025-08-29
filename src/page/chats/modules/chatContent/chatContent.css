@@ -13,7 +13,7 @@
     gap: 10px;
     width: 100%;
     height: 40px;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid var(--border-color);
 }
 .chatContent__user {
     width: 50vw;
@@ -37,7 +37,7 @@
     font-size: 13px;
     line-height: 13px;
     letter-spacing: 0%;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
 }
 .chatContent__menu {
     width: 34px;
@@ -67,7 +67,7 @@
     line-height: 12px;
     letter-spacing: 0%;
     text-align: center;
-    color: #999999;
+    color: var(--element-color);
 }
 .chatContent__control {
     width: 100%;
@@ -75,7 +75,7 @@
     justify-content: space-between;
     gap: 10px;
     padding-top: 10px;
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid var(--border-color);
 }
 .chatContent__control > .input {
     width: calc(100% - 30px - 10px - 20px - 10px);

@@ -1,6 +1,9 @@
 
 /* общие */
+@import url(./rootStyle.css);
+@import url(./main.css);
 @import url(../static/fonts/Inter_Web/inter.css);
+
 
 /* страницы */
 /* @import url(page/home/home.css); */
@@ -25,9 +28,13 @@
 
     /* модули профиля */
     @import url(page/profile/modules/inputProfile/inputProfile.css);
+    @import url(page/profile/modules/inputAvatar/inputAvatar.css);
  /*  */
 
 
- body {
+body {
     margin: 0;
+}
+header {
+    /* display: none; */
 }

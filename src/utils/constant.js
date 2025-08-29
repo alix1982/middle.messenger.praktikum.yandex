@@ -1,8 +1,11 @@
+import avatarDefault from '../../static/img/avatarDefault.svg';
+
 export const dataChats = [
     {
         idChat: 1,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -106,6 +109,7 @@ export const dataChats = [
         idChat: 2,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -149,6 +153,7 @@ export const dataChats = [
         idChat: 3,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -192,6 +197,7 @@ export const dataChats = [
         idChat: 4,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -235,6 +241,7 @@ export const dataChats = [
         idChat: 5,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -278,6 +285,7 @@ export const dataChats = [
         idChat: 6,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -321,6 +329,7 @@ export const dataChats = [
         idChat: 7,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -364,6 +373,7 @@ export const dataChats = [
         idChat: 8,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -407,6 +417,7 @@ export const dataChats = [
         idChat: 9,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -450,6 +461,7 @@ export const dataChats = [
         idChat: 10,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -493,6 +505,7 @@ export const dataChats = [
         idChat: 11,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -536,6 +549,7 @@ export const dataChats = [
         idChat: 12,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -579,6 +593,7 @@ export const dataChats = [
         idChat: 13,
         name: 'Дмитирий', // idUser
         countMessegesNotRead: 2,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -622,6 +637,7 @@ export const dataChats = [
         idChat: 14,
         name: 'Алексндр', // idUser
         countMessegesNotRead: 5,
+        avatarUser: avatarDefault,
         messeges: [
             {
                 idMessege: 1,
@@ -669,12 +685,13 @@ export const transformMonth = [
 ];
 
 export const userData = {
-    name: 'Иван',
+    name: 'Сергей',
     email: 'pochta@yandex.ru',
     login: 'ivanivanov',
     first_name: 'Иван',
     second_name: 'Иванов',
     phone: '+7(909)967-30-30',
+    avatar: ''
 }
 
 export const dataInputsDisebledProfile = [
@@ -721,7 +738,7 @@ export const dataInputsDisebledProfile = [
     {
         id: 5,
         heading: 'Имя в чате',
-        name: 'name',
+        name: 'display_name',
         type: 'text',
         value: '',
         disabled: true,
@@ -784,7 +801,7 @@ export const dataInputsFixProfile = [
     {
         id: 5,
         heading: 'Имя в чате',
-        name: 'name',
+        name: 'display_name',
         type: 'text',
         value: '',
         disabled: false,

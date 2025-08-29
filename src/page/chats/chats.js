@@ -4,15 +4,17 @@ import chatsList from "./modules/chatsList/chatsList";
 
 export default function (dataChats, idChatSelected) {
     return `
-         <section class='chats'>
-            <div class='chats__list'>
+         <main class='chats'>
+            <section class='chats__list'>
                 ${button('Профиль &gt;', 'profileButton')}
-                ${input('search', 'text', '&#128269;&nbsp;Поиск ')}
+                <form>
+                    ${input('search', 'text', '&#128269;&nbsp;Поиск ')}
+                </form>
                 ${chatsList(dataChats)}
-            </div>
-            <div class='chats__item'>
+            </section>
+            <section class='chats__item'>
                 <p class='chats__itemText'>Выберите чат чтобы отправить сообщение</p>
-            </div>
-        </section>
+            </section>
+        </main>
     `
 }

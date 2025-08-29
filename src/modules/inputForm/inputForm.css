@@ -16,13 +16,13 @@
 .inputForm__input {
     width: 98%;
     border: none;
-    border-bottom: 1px solid #3369F3;
+    border-bottom: 1px solid var(--element-backgroundDark);
 }
 .inputForm__input:focus {
     /* width: 100%;
     border: none; */
     outline: none;
-    border-bottom: 1px solid #3369F3;
+    border-bottom: 1px solid var(--element-backgroundDark);
 }
 .inputForm__error {
     font-family: Inter;
@@ -30,5 +30,5 @@
     font-size: 8px;
     line-height: 8px;
     letter-spacing: 0%;
-    color: #FF2F2F;
+    color: var(--element-colorError);
 }

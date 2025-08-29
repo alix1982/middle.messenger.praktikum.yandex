@@ -3,7 +3,7 @@
     min-width: 10%;
     max-width: 60%;
     border-radius: 20px 20px 0 20px;
-    background-color: #E4EDFD;
+    background-color: var(--myMessegeChat-background);
     padding: 11px;
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
     min-width: 10%;
     max-width: 60%;
     border-radius: 0 20px 20px 20px;
-    background-color: #F8F8F8;
+    background-color: var(--companionMessegeChat-background);
     padding: 11px;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
     line-height: 15px;
     letter-spacing: 0%;
     text-align: left;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
 }
 .chatMessage__info {
     margin: 0;
@@ -54,8 +54,8 @@
     line-height: 9px;
     letter-spacing: 0%;
     text-align: right;
-    color: #3369F3;
+    color: var(--element-backgroundDark);
 }
 .chatMessage__companion .chatMessage__time{
-    color: #999999;
+    color: var(--element-color);
 }

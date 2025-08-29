@@ -7,8 +7,8 @@
     margin: 0;
     padding: 0 15px;
     border: none;
-    border-left: 1px solid #EAEAEA;
-    background: #FBFBFB;
+    border-left: 1px solid var(--border-color);
+    background: var(--element-backgroundLight);
     background-image: url(../../../static/img/addMessageIcon.svg);
     rotate: 180deg;
     background-repeat: no-repeat;
@@ -27,12 +27,13 @@
     padding: 60px;
 }
 .profile__avatar {
-    width: 40px;
-    height: 40px;
-    padding: 45px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    background-color: #EFEFEF;
-    background-position: center;
+    overflow: hidden;
+    /* grid-column: 1/2;
+    grid-row: 1/2; */
+    object-fit: contain;
 }
 .profile__name {
     margin: 20px 10px 60px;
@@ -42,22 +43,22 @@
     line-height: 16px;
     letter-spacing: 0%;
     text-align: center;
-    color: #1E1E1E;
+    color: var(--element-colorDark);
 }
 .profile__data {
     width: 40%;
-    margin: 0 0 60px 0;
 }
 .profile__buttons {
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 60px 0 0 0;
 }
 .profile__button {
     width: 100%;
     border: none;
-    border-bottom: 1px solid #EAEAEA;
+    border-bottom: 1px solid var(--border-color);
     background-color: transparent;
     text-align: left;
     font-family: Inter;
@@ -65,13 +66,13 @@
     font-size: 13px;
     line-height: 13px;
     letter-spacing: 0%;
-    color: #3369F3;
+    color: var(--element-backgroundDark);
 }
 .profile__button:hover {
     opacity: 0.8;
     cursor: pointer;
-    border-bottom: 1px solid #ABABAB ;
+    border-bottom: 1px solid var(--border-colorDark);
 }
 .profile__button_red {
-    color: #FF0000;
+    color: var(--element-colorError);
 }

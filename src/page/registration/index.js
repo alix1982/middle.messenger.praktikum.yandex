@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import registration from "./registration";
-import { render, setPageRender } from "../..";
+import { render, renderContentHandlebars, setPageRender } from "../..";
 
 export function registrationHtml() {
     const dataRegistration = {
@@ -15,10 +15,11 @@ export function registrationHtml() {
     };
 
     // document.addEventListener('DOMContentLoaded', () => {
-        const rootRegistration = document.querySelector('#app');
-        const template = Handlebars.compile(registration(dataRegistration));
-        const result = template();
-        rootRegistration.innerHTML = result;
+        renderContentHandlebars('#app', registration(dataRegistration))
+        // const rootRegistration = document.querySelector('#app');
+        // const template = Handlebars.compile(registration(dataRegistration));
+        // const result = template();
+        // rootRegistration.innerHTML = result;
 
         const submitFormRegistration = document.querySelector('#submitFormRegistration');
         const loginButton = document.querySelector('#loginButton');

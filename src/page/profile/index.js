@@ -3,32 +3,39 @@ import profile from "./profile";
 import { dataInputsDisebledProfile, dataInputsFixPassword, dataInputsFixProfile, userData } from "../../utils/constant";
 import inputProfile from "./modules/inputProfile/inputProfile";
 import button from "../../modules/button/button";
-import { render, setPageRender } from "../..";
+import { render, renderContentHandlebars, setPageRender } from "../..";
+import { inputAvatarHtml } from "./modules/inputAvatar";
 
 export function profileHtml() {
     let profilePage = 'main'; // main, fixData, fixPass
 
+    function transitionRout(rout) {
+        setPageRender(rout);
+        render();
+    };
+    
     function setEvent() {
         document.querySelector('#profile__buttonBack').addEventListener("click", () => { 
-            profilePage === 'main' ? history.back() : setMain();
-        })
+            profilePage === 'main' ? transitionRout('chats') : setMain();
+        });
+
         if (profilePage === 'main') {
             document.querySelector('#profile_fixData').addEventListener("click", () => {fixProfile()});
             document.querySelector('#profile_fixPass').addEventListener("click", fixPassword);
             // document.querySelector('#profile_exit').addEventListener("click", () => {
             //     window.location.href = '../../login.html'}
             // );
-            document.querySelector('#profile_exit').addEventListener('click', () => {
-                setPageRender('login');
-                render();
-            })
+            document.querySelector('#profile_exit').addEventListener('click', () => { transitionRout('login') })
         }
     };
     function renderProfile() {
-        const rootProfile = document.querySelector('#app');
-        const template = Handlebars.compile(profile(renderInput, renderButton));
-        const result = template();
-        rootProfile.innerHTML = result;
+        renderContentHandlebars('#app', profile(renderInput, renderButton))
+        // const rootProfile = document.querySelector('#app');
+        // const template = Handlebars.compile(profile(renderInput, renderButton));
+        // const result = template();
+        // rootProfile.innerHTML = result;
+
+        profilePage === 'fixData' && inputAvatarHtml('profile__formAvatar');
     };
 
     function setMain() {
@@ -64,17 +71,17 @@ export function profileHtml() {
     function renderButton() {
         if (profilePage === 'fixData') {
             return `
-                ${button('Сохранить')}
+                ${button('Сохранить', 'fixDataProfile', 'submit')}
             `
         } else if (profilePage === 'fixPass') {
             return `
-                ${button('Сохранить')}
+                ${button('Сохранить', 'fixPassProfile', 'submit')}
             `
         } else {
             return `
-                <button class='profile__button' id='profile_fixData'>Изменить данные</button>
-                <button class='profile__button' id='profile_fixPass'>Изменить пароль</button>
-                <button class='profile__button profile__button_red' id='profile_exit'>Выйти</button>
+                <button class='profile__button' id='profile_fixData' type='button'>Изменить данные</button>
+                <button class='profile__button' id='profile_fixPass' type='button'>Изменить пароль</button>
+                <button class='profile__button profile__button_red' id='profile_exit' type='button'>Выйти</button>
             `
         }
     }

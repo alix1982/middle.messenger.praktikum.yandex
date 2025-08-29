@@ -12,9 +12,9 @@
 - Для получения проекта в компилированном виде: клонировать репозиторий, установить нужные библиотеки и запустить скрипт "npm run build".
   Получим папку "dist" с проектом
 
-2. роуты
-- роут с ошибкой 404: [errorRout404](https://messenger15.netlify.app?key=error404)
-- роут с ошибкой 500: [errorRout500](https://messenger15.netlify.app?key=error500)
+2. ссылка
+- ссылка на страницу с ошибкой 404: [errorRout404](https://messenger15.netlify.app?key=error404)
+- ссылка на страницу с ошибкой 500: [errorRout500](https://messenger15.netlify.app?key=error500)
 
 2. [домен netlify](https://messenger15.netlify.app/)
 
@@ -22,4 +22,10 @@
 
 2. [макет дефолтный](https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1)
 
-2. Планы на будущее: подключение к серверу.
+2. аватар - ограничения на размер лимитом localstorage и работает в окне изменения данных пользователя
+
+2. меню на главной, чтобы убрать раскоментировать стили header в style.css
+
+2. Планы на будущее:
+- добавить фон активного чата
+- подключение к серверу.

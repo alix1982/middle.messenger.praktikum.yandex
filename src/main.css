@@ -1,0 +1,41 @@
+.main {
+    width: 100vw;
+    height: 20px;
+}
+.main__list {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.main__point {
+    width: 100%;
+    height: 100%;
+}
+.main__pointLink {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border-bottom: 1px solid var(--element-color);
+    cursor: pointer;
+    color: var(--element-color);
+    background-color: var(--element-colorLight);
+    opacity: 0.5;
+    text-align: center;
+}
+.main__pointLink_active {
+    opacity: 1;
+    color: var(--element-colorLight);
+    background-color: var(--element-backgroundDark);
+}
+.main__pointLink:hover {
+    width: 100%;
+    color: var(--element-colorLight);
+    background-color: var(--element-backgroundDark);
+}

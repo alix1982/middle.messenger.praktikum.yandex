@@ -9,7 +9,7 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #EAEAEA;
+    border-right: 1px solid var(--border-color);
 }
 .chats__list > button {
     width: 100px;
@@ -23,7 +23,7 @@
     line-height: 12px;
     letter-spacing: 0%;
     text-align: right;
-    color: #999999;
+    color: var(--element-color);
     /* text-decoration: none; */
 }
 .chats__profile {
@@ -38,7 +38,7 @@
     line-height: 12px;
     letter-spacing: 0%;
     text-align: right;
-    color: #999999;
+    color: var(--element-color);
     text-decoration: none;
 }
 .chats__item {
@@ -56,6 +56,6 @@
     line-height: 12px;
     letter-spacing: 0%;
     text-align: center;
-    color: #999999;
+    color: var(--element-color);
     margin: auto 0;
 }
