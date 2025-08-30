@@ -1,0 +1,13 @@
+:root {
+    --element-backgroundDark: #3369f3;
+    --element-background: #efefef;
+    --element-backgroundLight: #fbfbfb;
+    --element-colorLight: #ffffff;
+    --element-color: #999999;
+    --element-colorDark: #1e1e1e;
+    --element-colorError: #ff2f2f;
+    --border-color: #EAEAEA;
+    --border-colorDark: #ABABAB;
+    --myMessegeChat-background: #e4edfd;
+    --companionMessegeChat-background: #f8f8f8;
+}

@@ -1,0 +1,20 @@
+.button {
+    width: 98%;
+    height: 37px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--element-backgroundDark);
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: var(--element-colorLight);
+    /* align-self: center; */
+    margin: auto auto 0;
+}
+.button:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}

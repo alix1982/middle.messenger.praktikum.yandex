@@ -1,0 +1,96 @@
+.chatPoint {
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+}
+.chatPoint__button {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    opacity: 0.9;
+    transition: opacity 0.5s linear;
+}
+.chatPoint__button:hover {
+    opacity: 1;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: opacity 0.5s linear;
+}
+.chatPoint__avatar {
+    border-radius: 50%;
+    width: 47px;
+    height: 47px;
+    object-fit: cover;
+}
+.chatPoint__main {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+.chatPoint__heading {
+    margin: 0;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    color: var(--element-colorDark);
+}
+.chatPoint__content {
+    margin: 0;
+    height: 30px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+    color: var(--element-color);
+}
+.chatPoint__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    gap: 4px;
+}
+.chatPoint__time {
+    white-space: nowrap;
+    margin: 0;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 9px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    text-align: right;
+    color: var(--element-color);
+}
+.chatPoint__countMesNotRead {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    margin: 0;
+    background-color: var(--element-backgroundDark);
+    border-radius: 50%;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: var(--element-colorLight);
+}
+.chatPoint__scroll {
+    width: 5px;
+}

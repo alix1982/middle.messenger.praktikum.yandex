@@ -1,0 +1,94 @@
+.chatContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    width: 70%;
+    padding: 10px 20px;
+}
+.chatContent__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid var(--border-color);
+}
+.chatContent__user {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chatContent__avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+}
+.chatContent__heading {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-family: Inter;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 13px;
+    letter-spacing: 0%;
+    color: var(--element-colorDark);
+}
+.chatContent__menu {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../../../static/img/menuIcon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.chatContent__content {
+    height: 80vh;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: scroll;
+}
+.chatContent__contentTime {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: var(--element-color);
+}
+.chatContent__control {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
+}
+.chatContent__control > .input {
+    width: calc(100% - 30px - 10px - 20px - 10px);
+    border-radius: 30px;
+}
+.chatContent__controlButton {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../../../static/img/addMessageIcon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
