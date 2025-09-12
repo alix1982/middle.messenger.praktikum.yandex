@@ -56,7 +56,7 @@ export function chatsHtml() {
     function openMessege(e: Event, item: HTMLButtonElement) {
 
         idChatSelected = (item.attributes as IButtonElement).id.value;
-        let chat = dataChats.find((el:IDataChat) => Number(el.idChat) === Number(idChatSelected)) as IDataChat;
+        const chat = dataChats.find((el:IDataChat) => Number(el.idChat) === Number(idChatSelected)) as IDataChat;
 
         renderContentHandlebars('.chats__item', chatContent(chat))
 

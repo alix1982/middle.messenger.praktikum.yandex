@@ -28,9 +28,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurEmail(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationEmail(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationEmail(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');
@@ -46,9 +46,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurLogin(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationLogin(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationLogin(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');
@@ -64,9 +64,9 @@ export function registrationHtml() {
                 },
         blur: function  handleBlurFirstName(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let errElement = element.nextElementSibling;
-                let isValidate = validationName(element.value);
+                const element = (e.target as HTMLInputElement);
+                const errElement = element.nextElementSibling;
+                const isValidate = validationName(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputForm__error_active') :
                     errElement?.classList.remove('inputForm__error_active');
@@ -82,9 +82,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurSecondName(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationName(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationName(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');
@@ -100,9 +100,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurPhone(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationPhone(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationPhone(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');
@@ -118,9 +118,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurPass(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationPassword(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationPassword(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');
@@ -136,9 +136,9 @@ export function registrationHtml() {
                 },
         blur:   function  handleBlurPass(e: Event) {
                     e.preventDefault();
-                    let element = (e.target as HTMLInputElement);
-                    let errElement = element.nextElementSibling;
-                    let isValidate = validationPassword(element.value);
+                    const element = (e.target as HTMLInputElement);
+                    const errElement = element.nextElementSibling;
+                    const isValidate = validationPassword(element.value);
                     !isValidate ?
                         errElement?.classList.add('inputForm__error_active') :
                         errElement?.classList.remove('inputForm__error_active');

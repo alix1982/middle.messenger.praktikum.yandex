@@ -36,7 +36,7 @@ export function inputAvatarHtml(idRender: string) {
                 textAvatarElement.classList.add('inputAvatar__messege_error');
             }
             avatar = localStorage.getItem('avatar') ? (localStorage.getItem('avatar') as string) : avatarDefault;
-            let avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement;
+            const avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement;
             avatarElement.src = avatar;
             // avatarElement.src = avatarDefault;
             textAvatarElement.textContent = textFormAvatar;
@@ -49,7 +49,7 @@ export function inputAvatarHtml(idRender: string) {
     
     function setEventAvatar() {
         textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement;
-        let inputAvatarElement = document.querySelector('#avatar') as HTMLInputElement
+        const inputAvatarElement = document.querySelector('#avatar') as HTMLInputElement
         inputAvatarElement.addEventListener("input", (e) => {handleChangeAvatar(e)});
     };
     function renderAvatar() {

@@ -26,7 +26,7 @@ let err500Button: HTMLElement;
 //     emitEvent?: (event: string, ...args: []) => void,
 //     listeners?: {}
 // }
-export let eventBusData = eventBus();
+export const eventBusData = eventBus();
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     eventBusData = eventBus()
@@ -65,9 +65,9 @@ export function render() {
 }
 
 export function renderContentHandlebars(contentId: string, functionRender: string) {
-    let root = document.querySelector(contentId) as HTMLElement;
-    let template = Handlebars.compile(functionRender);
-    let result = template('');
+    const root = document.querySelector(contentId) as HTMLElement;
+    const template = Handlebars.compile(functionRender);
+    const result = template('');
     root.innerHTML = result;
 }
 

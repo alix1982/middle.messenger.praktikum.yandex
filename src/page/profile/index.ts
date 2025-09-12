@@ -42,20 +42,20 @@ export function profileHtml() {
     };
     
     function setEvent() {
-        let backButton = document.querySelector('#profile__buttonBack') as HTMLElement;
+        const backButton = document.querySelector('#profile__buttonBack') as HTMLElement;
         backButton.addEventListener("click", () => { 
             profilePage === 'main' ? transitionRout('chats') : setMain();
         });
 
-        let formProfile = document.querySelector('.profile__data') as HTMLElement;
+        const formProfile = document.querySelector('.profile__data') as HTMLElement;
         formProfile.addEventListener("submit", (e) => { 
             e.preventDefault();
         });
 
         if (profilePage === 'main') {
-            let dataButton = document.querySelector('#profile_fixData') as HTMLElement;
-            let passButton = document.querySelector('#profile_fixPass') as HTMLElement;
-            let exitButton = document.querySelector('#profile_exit') as HTMLElement;
+            const dataButton = document.querySelector('#profile_fixData') as HTMLElement;
+            const passButton = document.querySelector('#profile_fixPass') as HTMLElement;
+            const exitButton = document.querySelector('#profile_exit') as HTMLElement;
 
             dataButton.addEventListener("click", fixProfile);
             passButton.addEventListener("click", fixPassword);
@@ -63,13 +63,13 @@ export function profileHtml() {
         }
         if (profilePage === 'fixData') {
 
-            let inputEmail = document.querySelector('#email') as HTMLElement;
-            let inputLogin = document.querySelector('#login') as HTMLElement;
-            let inputFirstName = document.querySelector('#first_name') as HTMLElement;
-            let inputSecondName= document.querySelector('#second_name') as HTMLElement;
-            let inputDisplayName = document.querySelector('#display_name') as HTMLElement;
-            let inputPhone = document.querySelector('#phone') as HTMLElement;
-            let buttonSubmitFixData = document.querySelector('#fixDataProfile') as HTMLElement;
+            const inputEmail = document.querySelector('#email') as HTMLElement;
+            const inputLogin = document.querySelector('#login') as HTMLElement;
+            const inputFirstName = document.querySelector('#first_name') as HTMLElement;
+            const inputSecondName= document.querySelector('#second_name') as HTMLElement;
+            const inputDisplayName = document.querySelector('#display_name') as HTMLElement;
+            const inputPhone = document.querySelector('#phone') as HTMLElement;
+            const buttonSubmitFixData = document.querySelector('#fixDataProfile') as HTMLElement;
 
             inputEmail.addEventListener("input", function  handleChangeEmail(e: Event) {
                 e.preventDefault();
@@ -77,10 +77,10 @@ export function profileHtml() {
             });
             inputEmail.addEventListener("blur", function  handleBlurEmail(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationEmail(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationEmail(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -92,10 +92,10 @@ export function profileHtml() {
             });
             inputLogin.addEventListener("blur", function  handleBlurLogin(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationLogin(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationLogin(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -107,10 +107,10 @@ export function profileHtml() {
             });
             inputFirstName.addEventListener("blur", function  handleBlurFirstName(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationName(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationName(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -122,10 +122,10 @@ export function profileHtml() {
             });
             inputSecondName.addEventListener("blur", function  handleBlurSecondName(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationName(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationName(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -137,10 +137,10 @@ export function profileHtml() {
             });
             inputDisplayName.addEventListener("blur", function  handleBlurDisplayName(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationName(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationName(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -152,10 +152,10 @@ export function profileHtml() {
             });
             inputPhone.addEventListener("blur", function  handleBlurPhone(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationPhone(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationPhone(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -168,10 +168,10 @@ export function profileHtml() {
 
         }
         if (profilePage === 'fixPass') {
-            let inputOldPassword = document.querySelector('#oldPassword') as HTMLElement;
-            let inputNewPassword = document.querySelector('#newPassword') as HTMLElement;
-            let inputRepaetNewPassword = document.querySelector('#repeatNewPassword') as HTMLElement;
-            let buttonSubmitFixPass = document.querySelector('#fixPassProfile') as HTMLElement;
+            const inputOldPassword = document.querySelector('#oldPassword') as HTMLElement;
+            const inputNewPassword = document.querySelector('#newPassword') as HTMLElement;
+            const inputRepaetNewPassword = document.querySelector('#repeatNewPassword') as HTMLElement;
+            const buttonSubmitFixPass = document.querySelector('#fixPassProfile') as HTMLElement;
 
 
             inputOldPassword.addEventListener("input", function  handleChangeOldPassword(e: Event) {
@@ -180,10 +180,10 @@ export function profileHtml() {
             });
             inputOldPassword.addEventListener("blur", function  handleBlurOldPasword(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationPassword(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationPassword(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -195,10 +195,10 @@ export function profileHtml() {
             });
             inputNewPassword.addEventListener("blur", function  handleBlurNewPasword(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationPassword(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationPassword(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -210,10 +210,10 @@ export function profileHtml() {
             });
             inputRepaetNewPassword.addEventListener("blur", function  handleBlurRepaetNewPassword(e: Event) {
                 e.preventDefault();
-                let element = (e.target as HTMLInputElement);
-                let arrErrElement = element.labels;
-                let errElement = arrErrElement?.length ? arrErrElement[0] : element
-                let isValidate = validationPassword(element.value);
+                const element = (e.target as HTMLInputElement);
+                const arrErrElement = element.labels;
+                const errElement = arrErrElement?.length ? arrErrElement[0] : element
+                const isValidate = validationPassword(element.value);
                 !isValidate ?
                     errElement?.classList.add('inputProfile_error') :
                     errElement?.classList.remove('inputProfile_error');
@@ -257,7 +257,7 @@ export function profileHtml() {
         (profilePage === 'fixData' ? dataInputsFixProfile :
             (profilePage === 'fixPass' ? dataInputsFixPassword : dataInputsDisebledProfile)
         ).map((item: IDataInputsDisebledProfileConst) => {
-            let name = item.name;
+            const name = item.name;
             // let val = userData[name];
             // @ts-expect-error
             profilePage === 'fixPass' ? (item.value = dataProfilePass[name]) : (item.value = dataProfile[name]);

@@ -28,13 +28,13 @@ export function inputFormHtml(idRender: string) {
 
     const changeLogin = () => function  handleChangeLogin(e: Event) {
         e.preventDefault();
-        let value = (e.target as HTMLInputElement).value;  
+        const value = (e.target as HTMLInputElement).value;  
         // loginValue = value
         loginValue = value
     }
     function  handleChangeLogin(e: Event) {
         e.preventDefault();
-        let value = (e.target as HTMLInputElement).value;  
+        const value = (e.target as HTMLInputElement).value;  
         // loginValue = value
         loginValue = value
     }

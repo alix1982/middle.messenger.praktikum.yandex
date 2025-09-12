@@ -99,7 +99,7 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 function queryStringify(data: Data, url: string) {
 	let str = url + '?';
 	if (data) {
-		for (let i in data) {
+		for (const i in data) {
             // @ts-expect-error
 			(str = str + i + '=' + data[i] + '&')
 		}

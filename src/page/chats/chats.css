@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
 }
+
 .chats__list {
     width: 25%;
     height: 95vh;
@@ -11,28 +12,31 @@
     flex-direction: column;
     border-right: 1px solid var(--border-color);
 }
+
 .chats__list > button {
     width: 100px;
     height: 15px;
     margin: 10px 0 10px auto;
     border: none;
     background-color: transparent;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;
     letter-spacing: 0%;
     text-align: right;
     color: var(--element-color);
+
     /* text-decoration: none; */
 }
+
 .chats__profile {
     width: 100px;
     height: 15px;
     margin: 10px 0 10px auto;
     border: none;
     background-color: transparent;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;
@@ -41,6 +45,7 @@
     color: var(--element-color);
     text-decoration: none;
 }
+
 .chats__item {
     display: flex;
     flex-direction: column;
@@ -49,8 +54,9 @@
     width: 70%;
     padding: 10px 20px;
 }
+
 .chats__itemText {
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 12px;
     line-height: 12px;

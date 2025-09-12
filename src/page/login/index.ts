@@ -23,9 +23,9 @@ export function loginHtml() {
     }
     function  handleBlurLogin(e: Event) {
         e.preventDefault();
-        let element = (e.target as HTMLInputElement);
-        let errElement = element.nextElementSibling;
-        let isValidate = validationLogin(element.value);
+        const element = (e.target as HTMLInputElement);
+        const errElement = element.nextElementSibling;
+        const isValidate = validationLogin(element.value);
         !isValidate ? errElement?.classList.add('inputForm__error_active') : errElement?.classList.remove('inputForm__error_active');
     }
 
@@ -40,9 +40,9 @@ export function loginHtml() {
     }
     function  handleBlurPass(e: Event) {
         e.preventDefault();
-        let element = (e.target as HTMLInputElement);
-        let errElement = element.nextElementSibling;
-        let isValidate = validationPassword(element.value);
+        const element = (e.target as HTMLInputElement);
+        const errElement = element.nextElementSibling;
+        const isValidate = validationPassword(element.value);
         !isValidate ? errElement?.classList.add('inputForm__error_active') : errElement?.classList.remove('inputForm__error_active');
     }
 

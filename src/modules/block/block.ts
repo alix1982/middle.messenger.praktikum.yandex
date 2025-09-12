@@ -53,12 +53,12 @@ export function block(
     function _renderContentHandlebars(contentId: string, props: string[]) {
         // console.log(contentId);
         // console.log(eventBusData)
-        let root = document.querySelector(contentId) as HTMLElement;
+        const root = document.querySelector(contentId) as HTMLElement;
         // console.log(root)
         // console.log(elementFn)
         // console.log(props)
-        let template = Handlebars.compile(elementFn(...props));
-        let result = template('');
+        const template = Handlebars.compile(elementFn(...props));
+        const result = template('');
         contentId === '#app' ? (root.innerHTML = result) :
             root.insertAdjacentHTML(locationContent, result);
         element = root.querySelector(`#${props[0]}`) as HTMLElement

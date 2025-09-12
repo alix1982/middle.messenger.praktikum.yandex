@@ -10,8 +10,8 @@ export function chatContent(chat: IDataChat) {
     let dateMessages = 0;
     let monthMessages = -1;
     messagesSort.map((messege:IMesseges) => {
-        let date = new Date(messege.dateUnix * 1000).getDate();
-        let month = new Date(messege.dateUnix * 1000).getMonth();
+        const date = new Date(messege.dateUnix * 1000).getDate();
+        const month = new Date(messege.dateUnix * 1000).getMonth();
 
         if (month !== monthMessages || date !== dateMessages) {
             monthMessages = month;

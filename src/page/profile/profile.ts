@@ -3,7 +3,7 @@ import avatarDefault from '../../../static/img/avatarDefault.svg';
 
 export default function (renderInput: () => string, renderButton: () => string) {
 
-    let avatar = localStorage.getItem('avatar') ? localStorage.getItem('avatar') : avatarDefault;
+    const avatar = localStorage.getItem('avatar') ? localStorage.getItem('avatar') : avatarDefault;
 
     return `
         <main class='profile'>

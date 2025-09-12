@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .errRout404__main {
     width: 200px;
     height: 180px;
@@ -13,10 +14,11 @@
     flex-direction: column;
     align-items: center;
 }
+
 .errRout404__heading {
     width: 100%;
     margin: 0;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 40px;
     line-height: 40px;
@@ -24,10 +26,11 @@
     text-align: center;
     color: var(--element-colorDark);
 }
+
 .errRout404__text {
     margin: 0;
     margin-top: 20px;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 20px;
     line-height: 20px;
@@ -35,10 +38,11 @@
     color: var(--element-colorDark);
     text-align: center;
 }
+
 .errRout404__transitionRegistr {
     margin-top: 70px;
     text-decoration: none;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 11px;
     line-height: 11px;
