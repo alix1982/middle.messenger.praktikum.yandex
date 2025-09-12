@@ -36,15 +36,15 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 //     return new Promise((resolve, reject) => {
 //       const xhr = new XMLHttpRequest();
 //       xhr.open(method, url);
-      
+
 //       xhr.onload = function() {
 //         resolve(xhr);
 //       };
-  
+
 //       xhr.onabort = reject;
 //       xhr.onerror = reject;
 //       xhr.ontimeout = reject;
-      
+
 //       if (method === METHOD.GET || !data) {
 //         xhr.send();
 //       } else {
@@ -111,25 +111,25 @@ function queryStringify(data: Data, url: string) {
 
 export class HTTPTransport {
 	get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
-				
+
         // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
         return this.request(url, {...options, method: METHOD.GET});
 
 	};
     post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
-				
+
         // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
         return this.request(url, {...options, method: METHOD.POST});
 
 	};
     put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
-				
+
         // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
         return this.request(url, {...options, method: METHOD.PUT});
 
 	};
     delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
-				
+
         // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
         return this.request(url, {...options, method: METHOD.DELETE});
 
