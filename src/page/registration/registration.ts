@@ -1,7 +1,4 @@
-import { block } from "../../modules/block/block";
-import {button} from "../../modules/button/button";
-import {buttonLink} from "../../modules/buttonLink/buttonLink";
-import { inputForm } from "../../modules/inputForm/inputForm";
+import { block } from '../../modules/block/block'
 
 // interface IRegistration {
 //     email: string,
@@ -14,17 +11,16 @@ import { inputForm } from "../../modules/inputForm/inputForm";
 //     passwordReplay: string,
 // }
 
-registration.prototype.block = block as ()=>void;
+registration.prototype.block = block as () => void
 
 // export function registration({email, login, first_name, second_name, phone, password, passwordReplay }: IRegistration) {
 export function registration() {
-
-    return `
+  return `
         <main class='registration'>
             <section class='registration__main'>
                 <h1 class='registration__heading'>Регистрация</h1>
                 <form class='registration__form'>
-                    
+
                 </form>
 
             </section>

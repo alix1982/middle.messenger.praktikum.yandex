@@ -1,13 +1,10 @@
-import { block } from "../../modules/block/block";
-import {button} from "../../modules/button/button";
-import {input} from "../../modules/input/input";
-import { IDataChat } from "../../utils/constant";
-import chatsList from "./modules/chatsList/chatsList";
+import { block } from '../../modules/block/block'
+import { IDataChat } from '../../utils/constant'
 
-chats.prototype.block = block as ()=>void;
+chats.prototype.block = block as () => void
 
 export function chats(dataChats: IDataChat[]) {
-    return `
+  return `
          <main class='chats'>
             <section class='chats__list' id='chats__list'>
 
@@ -26,5 +23,4 @@ export function chats(dataChats: IDataChat[]) {
 // ${button('Профиль &gt;', 'profileButton')}
 // ${input('search', 'text', '&#128269;&nbsp;Поиск ')}
 // ${chatsList(dataChats)}
-
 

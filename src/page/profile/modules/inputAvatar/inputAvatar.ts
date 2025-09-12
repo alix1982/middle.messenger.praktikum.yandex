@@ -1,8 +1,5 @@
-export default 
-
-function inputAvatar( name: string, avatar: string, textFormAvatar: string ) {
-    
-    return `
+export default function inputAvatar(name: string, avatar: string, textFormAvatar: string) {
+  return `
         <label class='inputAvatar'>
             <input id='avatar' class='inputAvatar__input' type='file' name=${name}/>
             <img for='avatar' class='inputAvatar__img' src=${avatar} alt='аватар'/>

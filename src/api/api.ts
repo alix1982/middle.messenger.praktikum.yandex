@@ -1,19 +1,17 @@
 enum METHOD {
-    GET = 'GET',
-    POST = 'POST',
-    PUT = 'PUT',
-    PATCH = 'PATCH',
-    DELETE = 'DELETE'
-};
-type Data = {
-
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  PATCH = 'PATCH',
+  DELETE = 'DELETE',
 }
+type Data = {}
 
 type Options = {
-    method: METHOD;
-    data?: Data;
-    tries?: number
-};
+  method: METHOD
+  data?: Data
+  tries?: number
+}
 // const METHODS = {
 //     GET: 'GET',
 //     POST: 'POST',
@@ -23,7 +21,7 @@ type Options = {
 
 // Тип Omit принимает два аргумента: первый — тип, второй — строка
 // и удаляет из первого типа ключ, переданный вторым аргументом
-type OptionsWithoutMethod = Omit<Options, 'method'>;
+type OptionsWithoutMethod = Omit<Options, 'method'>
 
 // class HTTPTransport {
 //   get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
@@ -90,94 +88,84 @@ type OptionsWithoutMethod = Omit<Options, 'method'>;
 //     return fetch(url, options).catch(onError);
 // }
 
-
 /**
-	* Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
-	* На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
-	* На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
-*/
+ * Функцию реализовывать здесь необязательно, но может помочь не плодить логику у GET-метода
+ * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
+ * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
+ */
 function queryStringify(data: Data, url: string) {
-	let str = url + '?';
-	if (data) {
-		for (const i in data) {
-            // @ts-expect-error
-			(str = str + i + '=' + data[i] + '&')
-		}
-		// console.log(str);
-		str = str.slice(0, -1);
-	}
-	return str
+  let str = url + '?'
+  if (data) {
+    for (const i in data) {
+      // @ts-expect-error
+      str = str + i + '=' + data[i] + '&'
+    }
+    // console.log(str);
+    str = str.slice(0, -1)
+  }
+  return str
 }
 
 export class HTTPTransport {
-	get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
+  get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
+    return this.request(url, { ...options, method: METHOD.GET })
+  }
+  post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
+    return this.request(url, { ...options, method: METHOD.POST })
+  }
+  put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
+    return this.request(url, { ...options, method: METHOD.PUT })
+  }
+  delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+    // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
+    return this.request(url, { ...options, method: METHOD.DELETE })
+  }
+  // PUT, POST, DELETE
 
-        // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
-        return this.request(url, {...options, method: METHOD.GET});
+  // options:
+  // headers — obj
+  // data — obj
+  request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest> {
+    // const {method, headers, data} = options;
+    const { method, data } = options
 
-	};
-    post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest()
 
-        // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
-        return this.request(url, {...options, method: METHOD.POST});
+      function err() {
+        xhr.onabort = reject
+        xhr.onerror = reject
+        xhr.ontimeout = reject
+      }
 
-	};
-    put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
+      if (method === METHOD.GET) {
+        if (data) {
+          url = queryStringify(data, url)
+        }
+        // data ? url = queryStringify(data, url) : xhr.send(data);
+        xhr.open(method, url)
+        xhr.onload = function () {
+          resolve(xhr)
+        }
+        err()
+        xhr.send()
 
-        // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
-        return this.request(url, {...options, method: METHOD.PUT});
+        xhr.send()
+      } else {
+        xhr.open(method, url)
+        xhr.onload = function () {
+          resolve(xhr)
+        }
 
-	};
-    delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest>  {
+        err()
+        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
 
-        // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
-        return this.request(url, {...options, method: METHOD.DELETE});
-
-	};
-	// PUT, POST, DELETE
-
-	// options:
-	// headers — obj
-	// data — obj
-	request(url: string, options: Options = { method: METHOD.GET }): Promise<XMLHttpRequest>  {
-		// const {method, headers, data} = options;
-        const {method, data} = options;
-
-
-		return new Promise((resolve, reject) => {
-			const xhr = new XMLHttpRequest();
-
-			function err () {
-				xhr.onabort = reject;
-				xhr.onerror = reject;
-				xhr.ontimeout = reject;
-			};
-
-			if (method === METHOD.GET) {
-                if (data) {
-                    url = queryStringify(data, url)
-                }
-				// data ? url = queryStringify(data, url) : xhr.send(data);
-				xhr.open(method, url);
-				xhr.onload = function() {
-					resolve(xhr);
-				};
-				err();
-                xhr.send()
-
-				xhr.send();
-			} else {
-				xhr.open(method, url);
-				xhr.onload = function() {
-					resolve(xhr);
-				};
-
-				err();
-                xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
-
-                xhr.send(JSON.stringify(data));
-				// xhr.send(data);
-			};
-		});
-  };
+        xhr.send(JSON.stringify(data))
+        // xhr.send(data);
+      }
+    })
+  }
 }

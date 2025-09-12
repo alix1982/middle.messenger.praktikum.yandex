@@ -9,7 +9,6 @@ import { loginHtml } from "./page/login/index";
 import { profileHtml } from "./page/profile/index";
 import {registrationHtml}  from "./page/registration/index";
 import { eventBus } from "./modules/eventBus/eventBus";
-import { HTTPTransport } from "./api/api";
 
 let pageRender = 'login';
 let loginButton: HTMLElement;
@@ -17,9 +16,9 @@ let registrationButton: HTMLElement;
 let chatsButton: HTMLElement;
 let profileButton: HTMLElement;
 let err404Button: HTMLElement;
-let err500Button: HTMLElement;   
+let err500Button: HTMLElement;
 
-    
+
 // interface IEventBusData {
 //     onEvent?: (event: string, callback:()=>void) => void,
 //     offEvent?: (event: string, callback:()=>void) => void,
@@ -112,7 +111,7 @@ export function mainHtml() {
     // console.log('mainHtml')
     renderContentHandlebars('#header', main());
     // main.prototype.block('#header', [], {})
-    
+
     loginButton = document.querySelector('#loginLink') as HTMLButtonElement;
     registrationButton = document.querySelector('#registrationLink') as HTMLButtonElement;
     chatsButton = document.querySelector('#chatsLink') as HTMLButtonElement;

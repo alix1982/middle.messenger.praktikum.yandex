@@ -10,7 +10,8 @@
 //         console.log(err)
 //     })
 
-// new HTTPTransport().get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=1')
+// new HTTPTransport()
+//  .get('https://collectionapi.metmuseum.org/public/collection/v1/objects?departmentIds=1')
 //     .then((res)=> {
 //         console.log(res)
 //     })

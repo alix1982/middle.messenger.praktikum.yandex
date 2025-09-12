@@ -37,7 +37,6 @@ export function validationEmail(str: string) {
     const regSymbol = /[A-Za-z]/;
     if ( reg.test(str) ) {
         substr = str.substring(str.indexOf('@'));
-        console.log(substr)
         if (regSymbol.test(substr[1]) && substr.includes('.')) {
             isName = true;
         }
@@ -73,10 +72,10 @@ export function validationPhone(str: string) {
     return isName;
 }
 
-function validationMessege(str: string) {
-    let isName = false;
-    if (str.length >= 1) {
-        isName = true;
-    }
-    return isName;
-}
+// function validationMessege(str: string) {
+//     let isName = false;
+//     if (str.length >= 1) {
+//         isName = true;
+//     }
+//     return isName;
+// }

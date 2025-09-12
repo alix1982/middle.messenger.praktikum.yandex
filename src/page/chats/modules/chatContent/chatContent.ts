@@ -1,29 +1,31 @@
-import { input } from "../../../../modules/input/input"
-import { IDataChat, IMesseges, transformMonth } from "../../../../utils/constant";
-import { chatMessage } from "./chatMessage/chatMessage";
+import { input } from '../../../../modules/input/input'
+import { IDataChat, IMesseges, transformMonth } from '../../../../utils/constant'
+import { chatMessage } from './chatMessage/chatMessage'
 
 export function chatContent(chat: IDataChat) {
-    const {name, messeges, avatarUser}:IDataChat = chat;
-    const messagesSort = (messeges as IMesseges[]).sort((a:IMesseges, b:IMesseges) => a.dateUnix - b.dateUnix);
-    
-    let renderMesseges = '';
-    let dateMessages = 0;
-    let monthMessages = -1;
-    messagesSort.map((messege:IMesseges) => {
-        const date = new Date(messege.dateUnix * 1000).getDate();
-        const month = new Date(messege.dateUnix * 1000).getMonth();
+  const { name, messeges, avatarUser }: IDataChat = chat
+  const messagesSort = (messeges as IMesseges[]).sort(
+    (a: IMesseges, b: IMesseges) => a.dateUnix - b.dateUnix
+  )
 
-        if (month !== monthMessages || date !== dateMessages) {
-            monthMessages = month;
-            dateMessages = date;
-            
-            renderMesseges += `<li class='chatContent__contentTime'>${dateMessages}  ${transformMonth[monthMessages]}</li>`;
-        };
+  let renderMesseges = ''
+  let dateMessages = 0
+  let monthMessages = -1
+  messagesSort.map((messege: IMesseges) => {
+    const date = new Date(messege.dateUnix * 1000).getDate()
+    const month = new Date(messege.dateUnix * 1000).getMonth()
 
-        return renderMesseges += chatMessage(messege)
-    })
+    if (month !== monthMessages || date !== dateMessages) {
+      monthMessages = month
+      dateMessages = date
 
-    return `
+      renderMesseges += `<li class='chatContent__contentTime'>${dateMessages}  ${transformMonth[monthMessages]}</li>`
+    }
+
+    return (renderMesseges += chatMessage(messege))
+  })
+
+  return `
         <header class='chatContent__header'>
             <article class='chatContent__user'>
                 <img class='chatContent__avatar' src=${avatarUser} alt='аватар'/>
@@ -43,3 +45,4 @@ export function chatContent(chat: IDataChat) {
         </footer>
     `
 }
+
