@@ -5,11 +5,11 @@ enum METHOD {
   PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
-type Data = {}
+type IData = {[key: string]: string}
 
 type Options = {
   method: METHOD
-  data?: Data
+  data?: IData
   tries?: number
 }
 // const METHODS = {
@@ -93,7 +93,7 @@ type OptionsWithoutMethod = Omit<Options, 'method'>
  * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
  * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
  */
-function queryStringify(data: Data, url: string) {
+function queryStringify(data: IData, url: string) {
   let str = url + '?'
   if (data) {
     for (const i in data) {

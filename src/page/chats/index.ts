@@ -53,6 +53,7 @@ export function chatsHtml() {
   // }
 
   function openMessege(e: Event, item: HTMLButtonElement) {
+    console.log(e)
     idChatSelected = (item.attributes as IButtonElement).id.value
     const chat = dataChats.find(
       (el: IDataChat) => Number(el.idChat) === Number(idChatSelected)

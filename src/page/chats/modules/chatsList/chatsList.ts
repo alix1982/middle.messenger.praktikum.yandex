@@ -5,7 +5,7 @@ import {chatPoint} from "../chatPoint/chatPoint";
 chatsList.prototype.block = block as ()=>void;
 
 export default function chatsList( id:string, dataChats: IDataChat[]) {
-    
+    console.log(id)
     let renderContent = '';
 
     dataChats.map((item) =>

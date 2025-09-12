@@ -903,14 +903,24 @@ export const userData: IUserDataConst = {
 }
 
 export interface IDataInputsDisebledProfileConst {
-  id: number
-  heading: string
-  name: string
-  type: string
-  value: string
-  disabled: boolean
-  textError: string
-  placeholder: string
+  id: number,
+  heading: string,
+  name: ("email" | "login" | "first_name" | "second_name" | "display_name" | "phone"),
+  type: string,
+  value: string,
+  disabled: boolean,
+  textError: string,
+  placeholder: string,
+}
+export interface IDataInputsPasswordConst {
+  id: number,
+  heading: string,
+  name: ("oldPassword" | "newPassword" | "repeatNewPassword"),
+  type: string,
+  value: string,
+  disabled: boolean,
+  textError: string,
+  placeholder: string,
 }
 
 export const dataInputsDisebledProfile: IDataInputsDisebledProfileConst[] = [
@@ -1039,7 +1049,7 @@ export const dataInputsFixProfile: IDataInputsDisebledProfileConst[] = [
   },
 ]
 
-export const dataInputsFixPassword: IDataInputsDisebledProfileConst[] = [
+export const dataInputsFixPassword: IDataInputsPasswordConst[] = [
   {
     id: 1,
     heading: 'Старый пароль',

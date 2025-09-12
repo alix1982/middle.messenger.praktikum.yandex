@@ -5,6 +5,7 @@ import {
   dataInputsFixPassword,
   dataInputsFixProfile,
   IDataInputsDisebledProfileConst,
+  IDataInputsPasswordConst,
   userData,
 } from '../../utils/constant'
 import inputProfile from './modules/inputProfile/inputProfile'
@@ -20,18 +21,26 @@ import {
 } from '../../utils/validation'
 
 export function profileHtml() {
-  // interface IUserData {
-  //   name: string
-  //   email: string
-  //   login: string
-  //   pass: string
-  //   first_name: string
-  //   second_name: string
-  //   phone: string
-  //   avatar: string
-  // }
+  interface IUserData {
+    name: string
+    email: string
+    login: string
+    pass: string
+    first_name: string
+    second_name: string
+    phone: string
+    avatar: string
+  }
 
-  const dataProfile = {
+  interface IDataProfile {
+    email: string
+    login: string
+    first_name: string
+    second_name: string
+    display_name: string
+    phone: string
+  }
+  const dataProfile:IDataProfile = {
     email: userData.email,
     login: userData.login,
     first_name: userData.first_name,
@@ -266,23 +275,52 @@ export function profileHtml() {
     renderProfile()
     setEvent()
   }
-
+  //  enum name {
+  //   name: "email",
+  //   login: login,
+  //   first_name: first_name,
+  //   second_name: second_name,
+  //   display_name: display_name,
+  //   phone: phone
+  //  }
   function renderInput() {
-    let renderInputList = ''
+    let renderInputList = '';
     // userData: IUserData
-    ;(profilePage === 'fixData'
-      ? dataInputsFixProfile
-      : profilePage === 'fixPass'
-        ? dataInputsFixPassword
-        : dataInputsDisebledProfile
-    ).map((item: IDataInputsDisebledProfileConst) => {
-      const name = item.name
-      // let val = userData[name];
-      profilePage === 'fixPass'
-        ? (item.value = dataProfilePass[name])
-        : (item.value = dataProfile[name])
-      return (renderInputList += inputProfile(item))
-    })
+    if (profilePage === 'fixData') {
+      dataInputsFixProfile.map((item: IDataInputsDisebledProfileConst) => {
+        const name:("email" | "login" | "first_name" | "second_name" | "display_name" | "phone")
+           = item.name;
+        item.value = dataProfile[name];
+        return (renderInputList += inputProfile(item))
+      })
+    }
+    if (profilePage === 'fixPass') {
+      dataInputsFixPassword.map((item: IDataInputsPasswordConst) => {
+        const name:("oldPassword" | "newPassword" | "repeatNewPassword") =
+          item.name as ("oldPassword" | "newPassword" | "repeatNewPassword")
+        (item.value = dataProfilePass[name]);
+        return (renderInputList += inputProfile(item))
+      })
+    } else {
+      dataInputsDisebledProfile.map((item: IDataInputsDisebledProfileConst) => {
+        const name:("email" | "login" | "first_name" | "second_name" | "display_name" | "phone")
+          = item.name;
+        item.value = dataProfile[name];
+        return (renderInputList += inputProfile(item))
+      })
+    }
+    // (profilePage === 'fixData'
+    //   ? dataInputsFixProfile
+    //   : profilePage === 'fixPass'
+    //     ? dataInputsFixPassword
+    //     : dataInputsDisebledProfile
+    // ).map((item: IDataInputsDisebledProfileConst | IDataInputsPasswordConst) => {
+    //   // let val = userData[name];
+    //   profilePage === 'fixPass'
+    //     ? (item.value = dataProfilePass[item.name])
+    //     : (item.value = dataProfile[item.name])
+    //   return (renderInputList += inputProfile(item))
+    // })
 
     return renderInputList
   }

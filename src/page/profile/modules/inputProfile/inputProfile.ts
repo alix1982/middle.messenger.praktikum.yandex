@@ -1,4 +1,4 @@
-import { IDataInputsDisebledProfileConst } from "../../../../utils/constant"
+// import { IDataInputsDisebledProfileConst } from "../../../../utils/constant"
 
 // interface IInputProfile {
 //     heading: string,
@@ -10,12 +10,22 @@ import { IDataInputsDisebledProfileConst } from "../../../../utils/constant"
 //     textError: string,
 // }
 
+interface IDataInputProfile {
+  id: number,
+  heading: string,
+  name: ("email" | "login" | "first_name" | "second_name" | "display_name" | "phone" | "oldPassword" | "newPassword" | "repeatNewPassword"),
+  type: string,
+  value: string,
+  disabled: boolean,
+  textError: string,
+  placeholder: string,
+}
 export default
 
 // <span class='inputProfile__error'>${textError}</span>
 
 function (
-  {heading, name, type, placeholder, value, disabled}: IDataInputsDisebledProfileConst
+  {heading, name, type, placeholder, value, disabled}: IDataInputProfile
 ): string {
     if (value === undefined) {
         value = `1111`
