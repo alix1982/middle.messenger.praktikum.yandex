@@ -14,7 +14,10 @@ export function inputFormHtml() {
   // function block(...arg:[]) {
   //     block(...arg)
   // }
-  // let avatar: string = localStorage.getItem('avatar') ? (localStorage.getItem('avatar') as string) : avatarDefault;
+  // let avatar: string =
+  // localStorage.getItem('avatar') ?
+  // (localStorage.getItem('avatar') as string) :
+  // avatarDefault;
   // let textFormAvatar = 'Поменять';
   // let textAvatarElement: HTMLElement
   // let loginValue = '1'

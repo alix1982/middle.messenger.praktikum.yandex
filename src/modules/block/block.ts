@@ -32,7 +32,9 @@ interface IMeta {
 //   FLOW_RENDER: 'flow:render',
 //   FLOW_CDU: 'flow:component-did-update',
 // }
-// export function block(tagName: string, renderContent: (...arg: string[])=> string, ...arg: string[]) {
+// export function block(
+// tagName: string, renderContent: (...arg: string[])=> string, ...arg: string[]
+// ) {
 export function block(
   tagName: string,
   props: string[],
@@ -88,7 +90,9 @@ export function block(
     Object.keys(propsEvent).forEach((eventName) => {
       eventBusData.onEvent(eventName, propsEvent[eventName])
       // if (element) {
-      //     element.addEventListener(eventName as ('click' | 'change' | "input"), propsEvent[eventName]);
+      //     element.addEventListener(
+      // eventName as ('click' | 'change' | "input"), propsEvent[eventName]
+      // );
       // }
     })
     // console.log(eventBusData.listeners)

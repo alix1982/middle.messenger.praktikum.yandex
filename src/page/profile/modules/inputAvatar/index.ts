@@ -37,7 +37,9 @@ export function inputAvatarHtml(idRender: string) {
                 textFormAvatar = 'Ошибка загрузки';
                 textAvatarElement.classList.add('inputAvatar__messege_error');
             }
-            avatar = localStorage.getItem('avatar') ? (localStorage.getItem('avatar') as string) : avatarDefault;
+            avatar = localStorage.getItem('avatar') ?
+              (localStorage.getItem('avatar') as string) :
+              avatarDefault;
             const avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement;
             avatarElement.src = avatar;
             // avatarElement.src = avatarDefault;

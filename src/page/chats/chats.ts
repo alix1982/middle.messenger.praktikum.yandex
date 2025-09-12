@@ -1,5 +1,4 @@
 import { block } from '../../modules/block/block'
-import { IDataChat } from '../../utils/constant'
 
 chats.prototype.block = block as () => void
 
