@@ -21,16 +21,16 @@ import {
 } from '../../utils/validation'
 
 export function profileHtml() {
-  interface IUserData {
-    name: string
-    email: string
-    login: string
-    pass: string
-    first_name: string
-    second_name: string
-    phone: string
-    avatar: string
-  }
+  // interface IUserData {
+  //   name: string
+  //   email: string
+  //   login: string
+  //   pass: string
+  //   first_name: string
+  //   second_name: string
+  //   phone: string
+  //   avatar: string
+  // }
 
   interface IDataProfile {
     email: string
