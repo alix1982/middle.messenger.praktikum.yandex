@@ -10,11 +10,13 @@ import { IDataInputsDisebledProfileConst } from "../../../../utils/constant"
 //     textError: string,
 // }
 
-export default 
+export default
 
 // <span class='inputProfile__error'>${textError}</span>
 
-function ( {heading, name, type, placeholder, value, disabled, textError}: IDataInputsDisebledProfileConst ): string {
+function (
+  {heading, name, type, placeholder, value, disabled}: IDataInputsDisebledProfileConst
+): string {
     if (value === undefined) {
         value = `1111`
     };

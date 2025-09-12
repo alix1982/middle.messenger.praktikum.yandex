@@ -3,7 +3,7 @@ import { IDataChat } from '../../utils/constant'
 
 chats.prototype.block = block as () => void
 
-export function chats(dataChats: IDataChat[]) {
+export function chats() {
   return `
          <main class='chats'>
             <section class='chats__list' id='chats__list'>

@@ -7,9 +7,11 @@ import inputAvatar from "./inputAvatar";
 
 export function inputAvatarHtml(idRender: string) {
 
-    let avatar: string = localStorage.getItem('avatar') ? (localStorage.getItem('avatar') as string) : avatarDefault;
+    let avatar: string = localStorage.getItem('avatar') ?
+      (localStorage.getItem('avatar') as string) :
+      avatarDefault;
     let textFormAvatar = 'Поменять';
-    let textAvatarElement: HTMLElement; 
+    let textAvatarElement: HTMLElement;
 
     function timerTextFormAvatar () {
         setTimeout(() => {
@@ -22,13 +24,13 @@ export function inputAvatarHtml(idRender: string) {
     function  handleChangeAvatar(e: Event) {
         const target= e.target as HTMLInputElement;
         const image: File = (target.files as FileList)[0];
-        // const image = e.target.files[0];  
+        // const image = e.target.files[0];
         const reader = new FileReader();
 
-        reader.addEventListener('load', () => {  
+        reader.addEventListener('load', () => {
             try {
                 // let {result}:{result: string} = reader;
-                
+
                 localStorage.setItem('avatar', (reader.result as string));
                 textFormAvatar = 'Аватар загружен';
             } catch (error) {
@@ -41,12 +43,12 @@ export function inputAvatarHtml(idRender: string) {
             // avatarElement.src = avatarDefault;
             textAvatarElement.textContent = textFormAvatar;
             timerTextFormAvatar();
-        });  
-        if (image) {  
-            reader.readAsDataURL(image);  
+        });
+        if (image) {
+            reader.readAsDataURL(image);
         }
     }
-    
+
     function setEventAvatar() {
         textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement;
         const inputAvatarElement = document.querySelector('#avatar') as HTMLInputElement

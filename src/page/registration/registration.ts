@@ -13,7 +13,9 @@ import { block } from '../../modules/block/block'
 
 registration.prototype.block = block as () => void
 
-// export function registration({email, login, first_name, second_name, phone, password, passwordReplay }: IRegistration) {
+// export function registration(
+// {email, login, first_name, second_name, phone, password, passwordReplay }: IRegistration
+// ) {
 export function registration() {
   return `
         <main class='registration'>
@@ -34,6 +36,11 @@ export function registration() {
 // ${inputForm('second_name', 'Фамилия', 'Неверная фамилия', 'text', `${second_name}`)}
 // ${inputForm('phone', 'Телефон', 'Неверный телефон', 'text', `${phone}`)}
 // ${inputForm('password', 'Пароль', 'Неверный пароль', 'text', `${password}`)}
-// ${inputForm('passwordReplay', 'Пароль (ещё раз)', 'Пароли не совпадают', 'text', `${passwordReplay}`)}
+// ${inputForm(
+// 'passwordReplay',
+// Пароль (ещё раз)',
+// 'Пароли не совпадают',
+// 'text',
+// `${passwordReplay}`)}
 // ${button('submitFormRegistration', 'Зарегистрироваться', 'submit')}
 // ${buttonLink('loginButton', 'Войти')}

@@ -19,7 +19,9 @@ export function chatContent(chat: IDataChat) {
       monthMessages = month
       dateMessages = date
 
-      renderMesseges += `<li class='chatContent__contentTime'>${dateMessages}  ${transformMonth[monthMessages]}</li>`
+      renderMesseges +=
+        `<li class='chatContent__contentTime'>${dateMessages}
+          ${transformMonth[monthMessages]}</li>`
     }
 
     return (renderMesseges += chatMessage(messege))

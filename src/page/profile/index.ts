@@ -5,7 +5,6 @@ import {
   dataInputsFixPassword,
   dataInputsFixProfile,
   IDataInputsDisebledProfileConst,
-  IUserDataConst,
   userData,
 } from '../../utils/constant'
 import inputProfile from './modules/inputProfile/inputProfile'
@@ -21,16 +20,16 @@ import {
 } from '../../utils/validation'
 
 export function profileHtml() {
-  interface IUserData {
-    name: string
-    email: string
-    login: string
-    pass: string
-    first_name: string
-    second_name: string
-    phone: string
-    avatar: string
-  }
+  // interface IUserData {
+  //   name: string
+  //   email: string
+  //   login: string
+  //   pass: string
+  //   first_name: string
+  //   second_name: string
+  //   phone: string
+  //   avatar: string
+  // }
 
   const dataProfile = {
     email: userData.email,
@@ -300,9 +299,23 @@ export function profileHtml() {
             `
     } else {
       return `
-                <button class='profile__button' id='profile_fixData' type='button'>Изменить данные</button>
-                <button class='profile__button' id='profile_fixPass' type='button'>Изменить пароль</button>
-                <button class='profile__button profile__button_red' id='profile_exit' type='button'>Выйти</button>
+        <button
+          class='profile__button'
+          id='profile_fixData'
+          type='button'>
+            Изменить данные
+          </button>
+        <button
+          class='profile__button'
+          id='profile_fixPass'
+          type='button'>
+          Изменить пароль
+        </button>
+        <button
+          class='profile__button profile__button_red'
+          id='profile_exit' type='button'>
+          Выйти
+        </button>
             `
     }
   }

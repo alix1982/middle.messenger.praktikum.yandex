@@ -26,12 +26,12 @@ interface IMeta {
 //     listeners?: {}
 // }
 // class Block {
-const EVENTS = {
-  INIT: 'init',
-  FLOW_CDM: 'flow:component-did-mount',
-  FLOW_RENDER: 'flow:render',
-  FLOW_CDU: 'flow:component-did-update',
-}
+// const EVENTS = {
+//   INIT: 'init',
+//   FLOW_CDM: 'flow:component-did-mount',
+//   FLOW_RENDER: 'flow:render',
+//   FLOW_CDU: 'flow:component-did-update',
+// }
 // export function block(tagName: string, renderContent: (...arg: string[])=> string, ...arg: string[]) {
 export function block(
   tagName: string,

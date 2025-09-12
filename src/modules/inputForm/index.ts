@@ -4,20 +4,20 @@
 // import block from '../block/block';
 // import avatarDefault from '../../../../../public/vite.svg';
 
-import { block } from '../block/block'
+// import { block } from '../block/block'
 
 // import inputAvatar from "./inputAvatar";
 
 // inputFormHtml.prototype.block = block
 
-export function inputFormHtml(idRender: string) {
+export function inputFormHtml() {
   // function block(...arg:[]) {
   //     block(...arg)
   // }
   // let avatar: string = localStorage.getItem('avatar') ? (localStorage.getItem('avatar') as string) : avatarDefault;
   // let textFormAvatar = 'Поменять';
-  let textAvatarElement: HTMLElement
-  let loginValue = '1'
+  // let textAvatarElement: HTMLElement
+  // let loginValue = '1'
   // function timerTextFormAvatar () {
   //     setTimeout(() => {
   //         // textFormAvatar = 'Поменять';
@@ -26,19 +26,19 @@ export function inputFormHtml(idRender: string) {
   //     },3000)
   // };
 
-  const changeLogin = () =>
-    function handleChangeLogin(e: Event) {
-      e.preventDefault()
-      const value = (e.target as HTMLInputElement).value
-      // loginValue = value
-      loginValue = value
-    }
-  function handleChangeLogin(e: Event) {
-    e.preventDefault()
-    const value = (e.target as HTMLInputElement).value
-    // loginValue = value
-    loginValue = value
-  }
+  // const changeLogin = () =>
+  //   function handleChangeLogin(e: Event) {
+  //     e.preventDefault()
+  //     const value = (e.target as HTMLInputElement).value
+  //     // loginValue = value
+  //     loginValue = value
+  //   }
+  // function handleChangeLogin(e: Event) {
+  //   e.preventDefault()
+  //   const value = (e.target as HTMLInputElement).value
+  //   // loginValue = value
+  //   loginValue = value
+  // }
 
   // function setEventInputForm() {
   //     textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement;

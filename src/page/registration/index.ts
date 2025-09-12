@@ -1,5 +1,5 @@
 // import Handlebars from "handlebars";
-import { render, renderContentHandlebars, setPageRender } from '../..'
+import { render, setPageRender } from '../..'
 import { button } from '../../modules/button/button'
 import { buttonLink } from '../../modules/buttonLink/buttonLink'
 import { inputForm } from '../../modules/inputForm/inputForm'
@@ -224,7 +224,8 @@ export function registrationHtml() {
   button.prototype.block('.registration__form', propsButton, propsEventButton)
   buttonLink.prototype.block('.registration__main', propsButtonLink, propsEventButtonLink)
 
-  // const submitFormRegistration = document.querySelector('#submitFormRegistration') as HTMLElement;
+  // const submitFormRegistration =
+  // document.querySelector('#submitFormRegistration') as HTMLElement;
   // const loginButton = document.querySelector('#loginButton') as HTMLElement;
 
   // submitFormRegistration.addEventListener('click', () => {
