@@ -279,9 +279,7 @@ export function profileHtml() {
       const name = item.name
       // let val = userData[name];
       profilePage === 'fixPass'
-      // @ts-expect-error
         ? (item.value = dataProfilePass[name])
-        // @ts-expect-error
         : (item.value = dataProfile[name])
       return (renderInputList += inputProfile(item))
     })

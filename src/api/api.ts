@@ -97,7 +97,6 @@ function queryStringify(data: Data, url: string) {
   let str = url + '?'
   if (data) {
     for (const i in data) {
-      // @ts-expect-error
       str = str + i + '=' + data[i] + '&'
     }
     // console.log(str);
