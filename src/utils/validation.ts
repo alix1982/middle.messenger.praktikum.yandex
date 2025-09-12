@@ -76,7 +76,7 @@ export function validationPhone(str: string) {
 function validationMessege(str: string) {
     let isName = false;
     if (str.length >= 1) {
-        isName = true;           
+        isName = true;
     }
     return isName;
 }
