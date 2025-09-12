@@ -6,6 +6,9 @@
     margin-top: 10px;
     gap: 10px;
 }
+.inputProfile_error {
+    border-bottom: 1px solid var( --element-colorError);
+}
 .inputProfile__heading {
     width: 45%;
     margin: 0;
