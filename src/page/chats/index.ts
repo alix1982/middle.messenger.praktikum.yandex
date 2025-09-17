@@ -56,7 +56,7 @@ export function chatsHtml() {
   const propsChatsList = ['chatsListMessege', dataChats, true];
 
   function openMessege(e: Event, item: HTMLButtonElement) {
-
+    console.log(e)
     idChatSelected = (item.attributes as IButtonElement).id.value
     const chat = dataChats.find(
       (el: IDataChat) => String(`chatPointButton${el.idChat}`) === String(idChatSelected)

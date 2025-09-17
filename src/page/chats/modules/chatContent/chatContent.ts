@@ -6,7 +6,7 @@ import { chatMessage } from './chatMessage/chatMessage'
 chatContent.prototype.block = block as ()=>void;
 
 export function chatContent( id:string, chat: [IDataChat]) {
-  // console.log(chat)
+  console.log(id)
   const { name, messeges, avatarUser }: IDataChat = chat[0]
   const messagesSort = (messeges as IMesseges[]).sort(
     (a: IMesseges, b: IMesseges) => a.dateUnix - b.dateUnix
