@@ -1,22 +1,16 @@
+import { block } from "../../../../modules/block/block"
 
-interface IButtonProfile {
-    id: string,
-    text: string,
-    heading: string,
-    name: string,
-    type: string,
-    placeholder: string,
-    value: string,
-    disabled: string,
-    textError: string,
-    typeButton: string
-}
+buttonProfile.prototype.block = block as () => void
 
-export default
+export function buttonProfile(id:string, classoOtional: string, text: string ): string {
+  return `
+    <button
+      class='profile__button ${classoOtional} '
+      id=${id}
+      type='button'
+    >
+        ${text}
+    </button>
 
-
-function ( {id, text, typeButton='button' }: IButtonProfile ): string {
-    return `
-        <button class='profile__button' id=${id} type=${typeButton}>${text}</button>
-    `
+  `
 }

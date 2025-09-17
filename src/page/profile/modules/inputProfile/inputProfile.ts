@@ -1,14 +1,4 @@
-// import { IDataInputsDisebledProfileConst } from "../../../../utils/constant"
-
-// interface IInputProfile {
-//     heading: string,
-//     name: string,
-//     type: string,
-//     placeholder: string,
-//     value: string,
-//     disabled: string,
-//     textError: string,
-// }
+import { block } from "../../../../modules/block/block"
 
 interface IDataInputProfile {
   id: number
@@ -29,24 +19,27 @@ interface IDataInputProfile {
   textError: string
   placeholder: string
 }
-export default // <span class='inputProfile__error'>${textError}</span>
 
-function ({ heading, name, type, placeholder, value, disabled }: IDataInputProfile): string {
-  if (value === undefined) {
-    value = `1111`
-  }
+inputProfile.prototype.block = block as () => void
+
+export function inputProfile( id:string,
+  { heading, name, type, placeholder, value, disabled }: IDataInputProfile
+
+): string {
+
   return `
-        <label class='inputProfile'>
-            <span class='inputProfile__heading'>${heading}</span>
-            <input
-                class='inputProfile__input'
-                type=${type}
-                name=${name}
-                id=${name}
-                value=${value}
-                placeholder=${placeholder}
-                ${disabled ? 'disabled' : ''}
-            />
-        </label>
-    `
+    <label class='inputProfile' id='inputProfile'>
+      <span class='inputProfile__heading'>${heading}</span>
+      <input
+        class='inputProfile__input'
+        type=${type}
+        name=${name}
+        id=${id}
+        value=${value}
+        placeholder=${placeholder}
+        ${disabled ? 'disabled' : ''}
+      />
+    </label>
+  `
 }
+// <span class='inputProfile__error'>${textError}</span>

@@ -2,22 +2,27 @@
 import { chats } from './chats'
 import { dataChats, IDataChat } from '../../utils/constant'
 import { chatContent } from './modules/chatContent/chatContent'
-import { render, renderContentHandlebars, setPageRender } from '../../index'
+import { render, setPageRender } from '../../index'
 import { button } from '../../modules/button/button'
 import { input } from '../../modules/input/input'
 import chatsList from './modules/chatsList/chatsList'
+import { validationMessege } from '../../utils/validation'
+import { chatFormSearch } from './modules/chatFormSearch/chatFormSearch'
+import { chatPoint } from './modules/chatPoint/chatPoint'
+import { chatPointButton } from './modules/chatPoint/chatPointButton/chatPointButton'
 
 export function chatsHtml() {
-  let idChatSelected = ''
-  let inputSearchValue = ''
-  let inputMessegeValue = ''
+
+  let idChatSelected = '';
+  let inputSearchValue = '';
+  let inputMessegeValue = '';
   interface IButtonElement extends NamedNodeMap {
     id: {
       value: string
     }
   }
 
-  const propsButton = ['profileButton', 'Профиль &gt; ']
+  const propsButton = ['profileButton', 'Профиль &gt; ', true]
   const propsEventButton = {
     click: handleTransitionProfile,
   }
@@ -26,10 +31,18 @@ export function chatsHtml() {
     render()
   }
 
-  const propsInputSearch = ['search', 'text', '&#128269;&nbsp;Поиск ']
+  const propsFormSearch = ['chats_searchForm', true]
+  const propsEventFormSearch = {
+    submit: function  handleSubmitSearch(e: Event) {
+                e.preventDefault();
+                console.log(inputSearchValue)
+            },
+  }
+
+  const propsInputSearch = ['search', 'text', '&#128269;&nbsp;Поиск ', true]
   const propsEventInputSearch = {
     input: function handleChangeSearch(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       inputSearchValue = (e.target as HTMLInputElement).value
       // console.log(inputSearchValue)
     },
@@ -40,86 +53,82 @@ export function chatsHtml() {
     //         },
   }
 
-  const propsChatsList = ['chatList', dataChats]
-  // const propsEventChatList = {
-  //     click: handleChangeChat,
-  // }
-  // function handleChangeChat() {
-  //     console.log('выбор чата')
-  //     // console.log(event.target)
-
-  //     // setPageRender('profile');
-  //     // render();
-  // }
+  const propsChatsList = ['chatsListMessege', dataChats, true];
 
   function openMessege(e: Event, item: HTMLButtonElement) {
-    console.log(e)
+
     idChatSelected = (item.attributes as IButtonElement).id.value
     const chat = dataChats.find(
-      (el: IDataChat) => Number(el.idChat) === Number(idChatSelected)
+      (el: IDataChat) => String(`chatPointButton${el.idChat}`) === String(idChatSelected)
     ) as IDataChat
 
-    renderContentHandlebars('.chats__item', chatContent(chat))
+    const propsChatsContent = ['chatList', [chat]];
 
-    const inputMessege = document.querySelector('#message') as HTMLButtonElement
-    const formMessege = document.querySelector('.chatContent__control') as HTMLButtonElement
-    const buttonSubmitMessege = document.querySelector(
-      '.chatContent__controlButton'
-    ) as HTMLButtonElement
+    const propsButtonMessage = ['messageButton', '', 'submit', true]
+    const propsEventButtonMessage = {
+      click: handleSubmitMessage,
+    }
+    function handleSubmitMessage(e: Event) {
+      e.preventDefault();
+      // inputMessegeValue = (e.target as HTMLInputElement).value
+      console.log(inputMessegeValue);
+    }
 
-    inputMessege.addEventListener('input', handleChangeMessege)
-    function handleChangeMessege(e: Event) {
-      e.preventDefault()
-      inputMessegeValue = (e.target as HTMLInputElement).value
-      // console.log(inputMessegeValue)
+    const propsInputMessage = ['message', 'text', 'Сообщение ', true]
+    const propsEventInputMessage = {
+      input: function handleChangeMessage(e: Event) {
+        e.preventDefault()
+        inputMessegeValue = (e.target as HTMLInputElement).value
+        // console.log(inputSearchValue)
+      },
+      blur: function handleBlurPass(e: Event) {
+            e.preventDefault()
+            const element = e.target as HTMLInputElement
+            // const errElement = element.nextElementSibling
+            const isValidate = validationMessege(element.value)
+            !isValidate
+              ? element?.classList.add('input__error')
+              : element?.classList.remove('input__error')
+      },
+      // submit: function  handleSubmitSearch(e: Event) {
+      //             e.preventDefault();
+      //             console.log(inputSearchValue)
+      //         },
     }
-    buttonSubmitMessege.addEventListener('submit', submitMessegeForm)
-    formMessege.addEventListener('submit', submitMessegeForm)
-    function submitMessegeForm(e: Event) {
-      e.preventDefault()
-      inputMessegeValue.length >= 1 && console.log(inputMessegeValue)
-    }
+
+    chatContent.prototype.block('#chats__item', propsChatsContent, {});
+    input.prototype.block('#chatContent__control', propsInputMessage, propsEventInputMessage)
+    button.prototype.block('#chatContent__control', propsButtonMessage, propsEventButtonMessage)
+
+    document.querySelector('#messageButton')?.classList.add('chatContent__controlButton')
   }
 
-  // let renderContent = '';
-
-  // const propsChatsListPoint = ['chatList', dataChats]
-  // const propsEventChatListPoint = {
-  //     click: handleChangeChat,
-  // }
-  // function handleChangeChat() {
-  //     console.log('выбор чата')
-  //     // console.log(event.target)
-
-  //     // setPageRender('profile');
-  //     // render();
-  // }
-
-  // renderContentHandlebars('#app', chats(dataChats));
   chats.prototype.block('#app', [], {})
   button.prototype.block('#chats__list', propsButton, propsEventButton, {}, 'afterbegin')
+  chatFormSearch.prototype.block('#chats__list', propsFormSearch, propsEventFormSearch)
   input.prototype.block('#chats_searchForm', propsInputSearch, propsEventInputSearch)
 
   chatsList.prototype.block('#chats__list', propsChatsList, {})
 
-  const formSearch = document.querySelector('#chats_searchForm') as HTMLButtonElement
-  formSearch.addEventListener('submit', submitSearchForm)
-  function submitSearchForm(e: Event) {
-    e.preventDefault()
-    console.log(inputSearchValue)
-  }
+  function setEventButtonPoint() {
+    dataChats.forEach((item) => {
+      const propsChatPoint = [`chatPoint${item.idChat}`, true]
+      const propsChatPointButton = [`chatPointButton${item.idChat}`, item, true]
+      const propsEventChatPointButton = {
+        click: (e:Event) => {
+          const elementButtonClick = document.querySelector(
+            `#chatPointButton${item.idChat}`
+          ) as HTMLButtonElement;
+          openMessege(e, elementButtonClick)
+        }
+      }
 
-  const arrChatsElements = document.querySelectorAll('.chatPoint__button')
-  arrChatsElements.forEach((item: HTMLButtonElement) =>
-    item.addEventListener('click', (e) => {
-      openMessege(e, item)
+      chatPoint.prototype.block('#chatsListMessege', propsChatPoint, {})
+      chatPointButton.prototype.block(
+        `#chatPoint${item.idChat}`, propsChatPointButton, propsEventChatPointButton
+      )
+
     })
-  )
-
-  // const profileButton = document.querySelector('#profileButton') as HTMLButtonElement;
-  // profileButton.addEventListener('click', () => {
-  //     setPageRender('profile');
-  //     render();
-  // })
+  }
+  setEventButtonPoint()
 }
-

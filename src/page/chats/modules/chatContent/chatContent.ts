@@ -1,9 +1,13 @@
-import { input } from '../../../../modules/input/input'
+import { block } from '../../../../modules/block/block';
+// import { input } from '../../../../modules/input/input'
 import { IDataChat, IMesseges, transformMonth } from '../../../../utils/constant'
 import { chatMessage } from './chatMessage/chatMessage'
 
-export function chatContent(chat: IDataChat) {
-  const { name, messeges, avatarUser }: IDataChat = chat
+chatContent.prototype.block = block as ()=>void;
+
+export function chatContent( id:string, chat: [IDataChat]) {
+  // console.log(chat)
+  const { name, messeges, avatarUser }: IDataChat = chat[0]
   const messagesSort = (messeges as IMesseges[]).sort(
     (a: IMesseges, b: IMesseges) => a.dateUnix - b.dateUnix
   )
@@ -28,23 +32,24 @@ export function chatContent(chat: IDataChat) {
   })
 
   return `
-        <header class='chatContent__header'>
-            <article class='chatContent__user'>
-                <img class='chatContent__avatar' src=${avatarUser} alt='аватар'/>
-                <p class='chatContent__heading'>${name}</p>
-            </article>
-            <button class='chatContent__menu' type='button'>
-            </button>
-        </header>
-        <ul class='chatContent__content'>
-            ${renderMesseges}
-        </ul>
-        <footer>
-            <form class='chatContent__control'>
-                ${input('message', 'text', 'Сообщение ')}
-                <button class='chatContent__controlButton' type='submit'></button>
-            </form>
-        </footer>
-    `
+    <header class='chatContent__header'>
+      <article class='chatContent__user'>
+        <img class='chatContent__avatar' src=${avatarUser} alt='аватар'/>
+        <p class='chatContent__heading'>${name}</p>
+      </article>
+      <button class='chatContent__menu' type='button'>
+      </button>
+    </header>
+    <ul class='chatContent__content'>
+      ${renderMesseges}
+    </ul>
+    <footer>
+      <form class='chatContent__control' id='chatContent__control'>
+
+      </form>
+    </footer>
+  `
 }
 
+// ${input('message', 'text', 'Сообщение ')}
+// <button class='chatContent__controlButton' type='submit'></button>

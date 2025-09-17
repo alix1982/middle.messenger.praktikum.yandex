@@ -30,6 +30,7 @@
     /* модули профиля */
     @import url("page/profile/modules/inputProfile/inputProfile.css");
     @import url("page/profile/modules/inputAvatar/inputAvatar.css");
+    @import url("page/profile/modules/buttonProfile/buttonProfile.css");
 
 
 

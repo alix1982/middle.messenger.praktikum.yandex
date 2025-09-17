@@ -1,9 +1,5 @@
-// import Handlebars from "handlebars";
-import { renderContentHandlebars } from '../../../..'
 import avatarDefault from '../../../../../static/img/avatarDefault.svg'
-// import avatarDefault from '../../../../../public/vite.svg';
-
-import inputAvatar from './inputAvatar'
+import {inputAvatar} from './inputAvatar'
 
 export function inputAvatarHtml(idRender: string) {
   let avatar: string = localStorage.getItem('avatar')
@@ -28,7 +24,6 @@ export function inputAvatarHtml(idRender: string) {
 
     reader.addEventListener('load', () => {
       try {
-        // let {result}:{result: string} = reader;
 
         localStorage.setItem('avatar', reader.result as string)
         textFormAvatar = 'Аватар загружен'
@@ -42,7 +37,6 @@ export function inputAvatarHtml(idRender: string) {
         : avatarDefault
       const avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement
       avatarElement.src = avatar
-      // avatarElement.src = avatarDefault;
       textAvatarElement.textContent = textFormAvatar
       timerTextFormAvatar()
     })
@@ -51,27 +45,21 @@ export function inputAvatarHtml(idRender: string) {
     }
   }
 
-  function setEventAvatar() {
-    textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement
-    const inputAvatarElement = document.querySelector('#avatar') as HTMLInputElement
-    inputAvatarElement.addEventListener('input', (e) => {
-      handleChangeAvatar(e)
-    })
-  }
   function renderAvatar() {
-    renderContentHandlebars(`#${idRender}`, inputAvatar('avatar', avatar, textFormAvatar))
-    // const rootAvatar = document.querySelector(`#${idRender}`);
-    // const template = Handlebars.compile(inputAvatar('avatar', avatar, textFormAvatar));
-    // const result = template();
-    // rootAvatar.innerHTML = result;
+    const propsInputAvatar= ['avatar', avatar, textFormAvatar]
+    const propsEventInputAvatar = {
+      input: handleChangeAvatar
+    }
+    inputAvatar.prototype.block(
+      `#${idRender}`, propsInputAvatar, propsEventInputAvatar, {}, 'afterbegin'
+    );
+
+    textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement
   }
 
   function setInputAvatar() {
     renderAvatar()
-    setEventAvatar()
   }
 
-  // document.addEventListener('DOMContentLoaded', () => {
   setInputAvatar()
-  // });
 }

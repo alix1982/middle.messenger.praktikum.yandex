@@ -10,7 +10,7 @@ import { profileHtml } from "./page/profile/index";
 import {registrationHtml}  from "./page/registration/index";
 import { eventBus } from "./modules/eventBus/eventBus";
 
-let pageRender = 'login';
+let pageRender = 'profile';
 let loginButton: HTMLElement;
 let registrationButton: HTMLElement;
 let chatsButton: HTMLElement;
@@ -92,7 +92,7 @@ function setActivPointHeader() {
     } else if (pageRender === 'registration') {
         registrationButton.classList.add('main__pointLink_active')
     } else if (pageRender === 'profile') {
-                console.log('profileIF')
+                // console.log('profileIF')
 
         profileButton.classList.add('main__pointLink_active')
     } else if (pageRender === 'chats') {

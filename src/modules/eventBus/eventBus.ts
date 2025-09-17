@@ -1,6 +1,8 @@
 export function eventBus() {
     interface IListeners {
-        [key: string]: (()=>void)[];
+        [key: string]: {elementId: string | undefined, listenerElement: (()=>void)}[];
+        // [key: string]: (()=>void)[];
+
         // callback?: ()=>void
     }
     // let _event: string;
@@ -8,15 +10,18 @@ export function eventBus() {
     // let _args;
     const listeners:IListeners = {};
 
-    function onEvent(event: string, callback: ()=> void) {
+    function onEvent(event: string, callback: ()=> void, elId: string | undefined = undefined) {
         // const _callback = () => callback
         // _event = event
         // console.log(event)
         if (!(listeners[event])) {
             listeners[event] = [];
         }
-
-        listeners[event].push(callback);
+        listeners[event].length === 0 &&
+          listeners[event].push({elementId: elId, listenerElement: callback});
+        listeners[event].find((item) => item.elementId === elId) === undefined &&
+          listeners[event].push({elementId: elId, listenerElement: callback});
+        // listeners[event].push({elementId: elId, listenerElement: callback});
     };
     function offEvent(event: string, callback:()=>void) {
         if (!listeners[event]) {
@@ -24,8 +29,9 @@ export function eventBus() {
         }
 
         listeners[event] = listeners[event].filter(
-            listener => listener !== callback
+            listener => listener.listenerElement !== callback
         );
+        listeners[event].length === 0 && delete listeners[event];
     };
     function emitEvent(event: string, ...args: []) {
         // let _event =;
@@ -34,10 +40,10 @@ export function eventBus() {
         }
 
         listeners[event].forEach((listener) => {
-            listener(...args);
+            listener.listenerElement(...args);
         });
     }
-    console.log(listeners)
+    // console.log(listeners)
     return {onEvent, offEvent, emitEvent, listeners}
 }
 

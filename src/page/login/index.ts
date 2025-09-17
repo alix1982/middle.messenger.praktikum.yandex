@@ -11,7 +11,9 @@ export function loginHtml() {
     passValue: '',
   }
 
-  const propsInputFormLogin = ['login', 'Логин', 'Неверный логин', 'text', dataLogin.loginValue]
+  const propsInputFormLogin = [
+    'login', 'Логин', 'Неверный логин', 'text', dataLogin.loginValue, true
+  ]
   const propsEventInputFormLogin = {
     input: handleChangeLogin,
     blur: handleBlurLogin,
@@ -30,7 +32,9 @@ export function loginHtml() {
       : errElement?.classList.remove('inputForm__error_active')
   }
 
-  const propsInputFormPass = ['pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.passValue]
+  const propsInputFormPass = [
+    'pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.passValue, true
+  ]
   const propsEventInputFormPass = {
     input: handleChangePass,
     blur: handleBlurPass,
@@ -49,7 +53,7 @@ export function loginHtml() {
       : errElement?.classList.remove('inputForm__error_active')
   }
 
-  const propsButton = ['loginButton', 'Войти', 'submit']
+  const propsButton = ['loginButton', 'Войти', 'submit', true]
   const propsEventButton = {
     click: handleSubmitFormLogin,
   }
@@ -59,13 +63,11 @@ export function loginHtml() {
     if (dataLogin.loginValue.trim() === '1' && dataLogin.passValue.trim() === '1') {
       setPageRender('chats')
       render()
-      // mainHtml()
-      // window.location.href = '../../chats.html'
     }
     console.log(dataLogin)
   }
 
-  const propsButtonLink = ['registrationButton', 'Нет аккаунта?']
+  const propsButtonLink = ['registrationButton', 'Нет аккаунта?', true]
   const propsEventButtonLink = {
     click: handleRedirectRegistration,
   }
@@ -74,23 +76,9 @@ export function loginHtml() {
     render()
   }
 
-  // renderContentHandlebars('#app', login());
   login.prototype.block('#app', [], {})
   inputForm.prototype.block('.login__form', propsInputFormLogin, propsEventInputFormLogin)
   inputForm.prototype.block('.login__form', propsInputFormPass, propsEventInputFormPass)
   button.prototype.block('.login__form', propsButton, propsEventButton)
   buttonLink.prototype.block('.login__main', propsButtonLink, propsEventButtonLink)
-
-  // const inputLogin = document.querySelector('#login') as HTMLInputElement;
-  // const inputPassword = document.querySelector('#password') as HTMLInputElement;
-  // const buttonSubmit = document.querySelector('#loginButton') as HTMLButtonElement;
-  // const registrationButton = document.querySelector('#registrationButton') as HTMLButtonElement;
-  // inputLogin.addEventListener('input', (e) => {handleChangeLogin(e)})
-  // inputPassword.addEventListener('input', (e) => {handleChangePass(e)})
-  // buttonSubmit.addEventListener('click', (e) => {handleSubmitFormLogin(e)})
-  // registrationButton.addEventListener('click', () => {
-  //     setPageRender('registration');
-  //     render();
-  // })
 }
-

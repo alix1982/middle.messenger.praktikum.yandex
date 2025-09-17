@@ -1,4 +1,3 @@
-// import Handlebars from "handlebars";
 import { render, setPageRender } from '../..'
 import { button } from '../../modules/button/button'
 import { buttonLink } from '../../modules/buttonLink/buttonLink'
@@ -26,7 +25,9 @@ export function registrationHtml() {
   }
 
   // email
-  const propsInputFormEmail = ['email', 'Почта', 'Неверная почта', 'text', dataRegistration.email]
+  const propsInputFormEmail = [
+    'email', 'Почта', 'Неверная почта', 'text', dataRegistration.email, true
+  ]
   const propsEventInputFormEmail = {
     input: function handleChangeEmail(e: Event) {
       e.preventDefault()
@@ -44,7 +45,9 @@ export function registrationHtml() {
   }
 
   // login
-  const propsInputFormLogin = ['login', 'Логин', 'Неверный логин', 'text', dataRegistration.login]
+  const propsInputFormLogin = [
+    'login', 'Логин', 'Неверный логин', 'text', dataRegistration.login, true
+  ]
   const propsEventInputFormLogin = {
     input: function handleChangeLogin(e: Event) {
       e.preventDefault()
@@ -68,6 +71,7 @@ export function registrationHtml() {
     'Неверное имя',
     'text',
     dataRegistration.first_name,
+    true
   ]
   const propsEventInputFormFirstName = {
     input: function handleChangeFirstName(e: Event) {
@@ -92,6 +96,7 @@ export function registrationHtml() {
     'Неверная фамилия',
     'text',
     dataRegistration.second_name,
+    true
   ]
   const propsEventInputFormSecondName = {
     input: function handleChangeSecondName(e: Event) {
@@ -116,6 +121,7 @@ export function registrationHtml() {
     'Неверный телефон',
     'text',
     dataRegistration.phone,
+    true
   ]
   const propsEventInputFormPhone = {
     input: function handleChangePhone(e: Event) {
@@ -140,6 +146,7 @@ export function registrationHtml() {
     'Неверный пароль',
     'text',
     dataRegistration.password,
+    true
   ]
   const propsEventInputFormPass = {
     input: function handleChangePass(e: Event) {
@@ -164,6 +171,7 @@ export function registrationHtml() {
     'Пароли не совпадают',
     'text',
     dataRegistration.passwordReplay,
+    true
   ]
   const propsEventInputFormPassReplay = {
     input: function handleChangePassReplay(e: Event) {
@@ -181,7 +189,7 @@ export function registrationHtml() {
     },
   }
 
-  const propsButton = ['submitFormRegistration', 'Зарегистрироваться', 'submit']
+  const propsButton = ['submitFormRegistration', 'Зарегистрироваться', 'submit', true]
   const propsEventButton = {
     click: handleSubmitFormRegistration,
   }
@@ -190,7 +198,7 @@ export function registrationHtml() {
     console.log(dataRegistration)
   }
 
-  const propsButtonLink = ['loginButton', 'Войти']
+  const propsButtonLink = ['loginButton', 'Войти', true]
   const propsEventButtonLink = {
     click: handleRedirectLogin,
   }
@@ -223,19 +231,4 @@ export function registrationHtml() {
 
   button.prototype.block('.registration__form', propsButton, propsEventButton)
   buttonLink.prototype.block('.registration__main', propsButtonLink, propsEventButtonLink)
-
-  // const submitFormRegistration =
-  // document.querySelector('#submitFormRegistration') as HTMLElement;
-  // const loginButton = document.querySelector('#loginButton') as HTMLElement;
-
-  // submitFormRegistration.addEventListener('click', () => {
-  //     setPageRender('login');
-  //     render();
-  // });
-
-  // loginButton.addEventListener('click', () => {
-  //     setPageRender('login');
-  //     render();
-  // })
 }
-

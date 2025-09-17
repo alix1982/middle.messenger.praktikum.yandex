@@ -11,3 +11,8 @@
     outline: none;
     border-bottom: 1px solid var(--element-colorDark);
 }
+
+.input__error {
+  border: 1px solid var(--element-colorError);
+}
+

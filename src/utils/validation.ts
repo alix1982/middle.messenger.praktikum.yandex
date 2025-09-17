@@ -72,10 +72,10 @@ export function validationPhone(str: string) {
     return isName;
 }
 
-// function validationMessege(str: string) {
-//     let isName = false;
-//     if (str.length >= 1) {
-//         isName = true;
-//     }
-//     return isName;
-// }
+export function validationMessege(str: string) {
+    let isName = false;
+    if (str.length >= 1) {
+        isName = true;
+    }
+    return isName;
+}
