@@ -4,7 +4,7 @@
     border: none;
     border-radius: 8px;
     background-color: transparent;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 11px;
     line-height: 11px;
@@ -13,6 +13,7 @@
     color: var(--element-backgroundDark);
     margin-top: 14px;
 }
+
 .buttonLink:hover {
     opacity: 0.9;
     cursor: pointer;

@@ -6,7 +6,13 @@
     border-radius: 5px;
     background-color: var(--element-background);
 }
+
 .input:focus {
     outline: none;
     border-bottom: 1px solid var(--element-colorDark);
 }
+
+.input__error {
+  border: 1px solid var(--element-colorError);
+}
+

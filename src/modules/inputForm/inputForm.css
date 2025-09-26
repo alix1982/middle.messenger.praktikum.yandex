@@ -5,30 +5,39 @@
     margin-top: 16px;
     gap: 7px;
 }
+
 .inputForm__heading {
     margin: 0;
-    font-family: Inter;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 9px;
     line-height: 9px;
     letter-spacing: 0%;
 }
+
 .inputForm__input {
     width: 98%;
     border: none;
     border-bottom: 1px solid var(--element-backgroundDark);
 }
+
 .inputForm__input:focus {
     /* width: 100%;
     border: none; */
     outline: none;
     border-bottom: 1px solid var(--element-backgroundDark);
 }
+
 .inputForm__error {
-    font-family: Inter;
+    opacity: 0;
+    font-family: Inter, sans-serif;
     font-weight: 400;
     font-size: 8px;
     line-height: 8px;
     letter-spacing: 0%;
     color: var(--element-colorError);
+}
+
+.inputForm__error_active {
+    opacity: 1;
 }
