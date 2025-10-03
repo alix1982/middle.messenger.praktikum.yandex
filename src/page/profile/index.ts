@@ -5,11 +5,10 @@ import {
   dataInputsFixProfile,
   IDataInputsDisebledProfileConst,
   IDataInputsPasswordConst,
-  userData,
+  // userData,
 } from '../../utils/constant'
 import {inputProfile} from './modules/inputProfile/inputProfile'
 import { button } from '../../modules/button/button'
-import { render, setPageRender } from '../..'
 import { inputAvatarHtml } from './modules/inputAvatar'
 import {
   validationEmail,
@@ -20,38 +19,53 @@ import {
 } from '../../utils/validation'
 import { buttonProfile } from './modules/buttonProfile/buttonProfile'
 import { buttonBackProfile } from './modules/buttonBackProfile/buttonBackProfile'
+import { routerBack } from '../../utils/routing/router'
+import { navigate } from '../../utils/routing/navigate'
+import { apiUserUpdate, apiUserUpdatePass } from '../../api/apiRequestUser'
+import { logout } from '../../api/apiRequestAuth'
+// import { apiUserUpdate } from '../../api/apiRequestAuth'
 
 export function profileHtml() {
 
-  interface IDataProfile {
-    email: string
-    login: string
-    first_name: string
-    second_name: string
-    display_name: string
-    phone: string
+  // interface IDataProfile {
+  //   email: string
+  //   login: string
+  //   first_name: string
+  //   second_name: string
+  //   display_name: string
+  //   phone: string
+  // }
+
+  // const dataProfile:IDataProfile = {
+  //   email: userData.email,
+  //   login: userData.login,
+  //   first_name: userData.first_name,
+  //   second_name: userData.second_name,
+  //   display_name: userData.name,
+  //   phone: userData.phone,
+  // }
+  const dataProfile = localStorage.getItem('dataUser') !== null ?
+      JSON.parse(localStorage.getItem('dataUser') as string) :
+      {
+        email: 'Unkown',
+        login: 'Unkown',
+        first_name: 'Unkown',
+        second_name: 'Unkown',
+        display_name: 'Unkown',
+        phone: 'Unkown',
+      };
+  const dataProfilePass = {
+    oldPassword: '',
+    newPassword: '',
+    repeatNewPassword: '',
   }
 
-  const dataProfile:IDataProfile = {
-    email: userData.email,
-    login: userData.login,
-    first_name: userData.first_name,
-    second_name: userData.second_name,
-    display_name: userData.name,
-    phone: userData.phone,
-  }
-  const dataProfilePass = {
-    oldPassword: '123',
-    newPassword: '123',
-    repeatNewPassword: '123',
-  }
+  // console.log(dataProfile);
 
   let profilePage = 'main' // main, fixData, fixPass
 
-  function transitionRout(rout: string) {
-    setPageRender(rout)
-    render()
-  }
+  // function transitionRout(rout: string) {
+
 
   function renderProfile() {
 
@@ -60,7 +74,8 @@ export function profileHtml() {
     const propsButtonBackProfile = ['profile__buttonBack', true]
     const propsEventButtonBackProfile = {
       click:  function backProfile() {
-                profilePage === 'main' ? transitionRout('chats') : setMain()
+                // profilePage === 'main' ? transitionRout('chats') : setMain()
+                profilePage === 'main' ? routerBack() : setMain()
               },
     }
     buttonBackProfile.prototype.block(
@@ -170,18 +185,21 @@ export function profileHtml() {
         );
       })
     }
-  }
+  };
+
   function renderButton() {
     if (profilePage === 'fixData') {
       const propsButtonProfileFixData = ['fixDataProfile', 'Сохранить', 'submit', true]
       const propsEventButtonProfileFixData = {
         click: function handleClickFormFixData(e: Event) {
-                e.preventDefault()
-                console.log(dataProfile)
+                e.preventDefault();
+                apiUserUpdate(dataProfile);
+                // console.log(dataProfile)
               },
         submit: function handleSubmitFormFixData(e: Event) {
-                e.preventDefault()
-                console.log(dataProfile)
+                e.preventDefault();
+                apiUserUpdate(dataProfile);
+                // console.log(dataProfile)
               },
       }
       button.prototype.block(
@@ -192,11 +210,13 @@ export function profileHtml() {
       const propsEventButtonProfileFixPass = {
         click: function handleClickFormFixPass(e: Event) {
                 e.preventDefault()
-                console.log(dataProfilePass)
+                console.log(dataProfilePass);
+                apiUserUpdatePass(dataProfilePass)
               },
         submit: function handleSubmitFormFixPass(e: Event) {
                 e.preventDefault()
                 console.log(dataProfilePass)
+                apiUserUpdatePass(dataProfilePass)
               },
       }
       button.prototype.block(
@@ -240,7 +260,9 @@ export function profileHtml() {
       ]
       const propsEventButtonProfileExit = {
         click:  function exitProfile() {
-                  transitionRout('login')
+                  logout();
+                  navigate('');
+                  // очистить куки
                 }
       }
       buttonProfile.prototype.block(

@@ -101,6 +101,10 @@
     color: var(--element-colorLight);
 }
 
+.chatPoint__countMesNotRead_noActiv {
+  display: none;
+}
+
 .chatPoint__scroll {
     width: 5px;
 }

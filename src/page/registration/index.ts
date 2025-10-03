@@ -1,7 +1,8 @@
-import { render, setPageRender } from '../..'
+import { apiAuthRegistr } from '../../api/apiRequestAuth'
 import { button } from '../../modules/button/button'
 import { buttonLink } from '../../modules/buttonLink/buttonLink'
 import { inputForm } from '../../modules/inputForm/inputForm'
+import { navigate } from '../../utils/routing/navigate'
 import {
   validationEmail,
   validationLogin,
@@ -10,7 +11,6 @@ import {
   validationPhone,
 } from '../../utils/validation'
 import { registration } from './registration'
-// import { render, renderContentHandlebars, setPageRender } from "../..";
 
 export function registrationHtml() {
   const dataRegistration = {
@@ -195,7 +195,11 @@ export function registrationHtml() {
   }
   function handleSubmitFormRegistration(e: Event) {
     e.preventDefault()
-    console.log(dataRegistration)
+    console.log(dataRegistration);
+    apiAuthRegistr(dataRegistration)
+      // .then(() => {
+      //   navigate('messenger')
+      // })
   }
 
   const propsButtonLink = ['loginButton', 'Войти', true]
@@ -203,8 +207,7 @@ export function registrationHtml() {
     click: handleRedirectLogin,
   }
   function handleRedirectLogin() {
-    setPageRender('login')
-    render()
+    navigate('')
   }
 
   // renderContentHandlebars('#app', registration(dataRegistration));

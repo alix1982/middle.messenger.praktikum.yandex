@@ -5,12 +5,19 @@ enum METHOD {
   PATCH = 'PATCH',
   DELETE = 'DELETE',
 }
-type IData = {[key: string]: string}
+type IData = {[key: string]: number[] | string | number}
+// type IData = {[key: string]: string}
 
 type Options = {
   method: METHOD
-  data?: IData
+  withCredentials?: boolean
+  credentials?: string
+  mode?: string
+  data?: IData | FormData
+  // title?: string
   tries?: number
+  users?: number[],
+  chatId?: number
 }
 // const METHODS = {
 //     GET: 'GET',
@@ -93,19 +100,20 @@ type HTTPMethod = (url: string, options?: OptionsWithoutMethod) => Promise<XMLHt
  * На входе: объект. Пример: {a: 1, b: 2, c: {d: 123}, k: [1, 2, 3]}
  * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
  */
-function queryStringify(data: IData, url: string) {
-  let str = url + '?'
-  if (data) {
-    for (const i in data) {
-      str = str + i + '=' + data[i] + '&'
-    }
-    // console.log(str);
-    str = str.slice(0, -1)
-  }
-  return str
-}
+// function queryStringify(data: IData, url: string) {
+//   let str = url + '?'
+//   if (data) {
+//     for (const i in data) {
+//       str = str + i + '=' + data[i] + '&'
+//     }
+//     // console.log(str);
+//     str = str.slice(0, -1)
+//   }
+//   return str
+// }
 
 export class HTTPTransport {
+
   get: HTTPMethod = (url, options = {}) => {
     // return this.request(url, {...options, method: METHOD.GET}, options.timeout);
     return this.request(url, { ...options, method: METHOD.GET })
@@ -140,31 +148,53 @@ export class HTTPTransport {
         xhr.ontimeout = reject
       }
 
-      if (method === METHOD.GET) {
-        if (data) {
-          url = queryStringify(data, url)
-        }
-        // data ? url = queryStringify(data, url) : xhr.send(data);
+      // if (method === METHOD.GET) {
+      //   if (data) {
+      //     url = queryStringify(data, url)
+      //   }
+      //   // data ? url = queryStringify(data, url) : xhr.send(data);
+      //   xhr.open(method, url)
+      //   xhr.onload = function () {
+      //     resolve(xhr)
+      //   }
+      //   err()
+      //   xhr.send()
+
+      //   xhr.send()
+      // } else {
         xhr.open(method, url)
         xhr.onload = function () {
           resolve(xhr)
         }
-        err()
-        xhr.send()
 
-        xhr.send()
-      } else {
-        xhr.open(method, url)
-        xhr.onload = function () {
-          resolve(xhr)
-        }
+        err();
+        xhr.withCredentials = true;
 
-        err()
-        xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+        xhr.setRequestHeader('Content-Type', 'multipart/form-data')
 
-        xhr.send(JSON.stringify(data))
+        const fileInput = document.querySelector('input[type=file]');
+        // console.log(fileInput.files[0])
+        const file = fileInput.files[0];
+        // console.log(file)
+        const formdata = new FormData();
+        formdata.append('avatar', file);
+        xhr.send(formdata);
+        // xhr.setRequestHeader('Accept', 'application/json')
+        // xhr.send(new FormData(data) as FormData);
+        // if (data?.type) {
+
+        //   console.log('1')
+        //   console.log(data)
+        //   xhr.setRequestHeader('Content-Type', 'multipart/form-data; charset=utf-8')
+        //   xhr.send(data as File);
+        // } else {
+        //   console.log('2')
+          // console.log(data)
+          // xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+          // xhr.send(JSON.stringify(data))
+        // }
         // xhr.send(data);
-      }
+      // }
     })
   }
 }

@@ -2,17 +2,18 @@ import { login } from './login'
 import { inputForm } from '../../modules/inputForm/inputForm'
 import { button } from '../../modules/button/button'
 import { buttonLink } from '../../modules/buttonLink/buttonLink'
-import { render, setPageRender } from '../..'
 import { validationLogin, validationPassword } from '../../utils/validation'
+import { navigate } from '../../utils/routing/navigate'
+import { apiAuthLogin } from '../../api/apiRequestAuth'
 
 export function loginHtml() {
   const dataLogin = {
-    loginValue: '',
-    passValue: '',
+    login: '',
+    password: '',
   }
 
   const propsInputFormLogin = [
-    'login', 'Логин', 'Неверный логин', 'text', dataLogin.loginValue, true
+    'login', 'Логин', 'Неверный логин', 'text', dataLogin.login, true
   ]
   const propsEventInputFormLogin = {
     input: handleChangeLogin,
@@ -20,7 +21,7 @@ export function loginHtml() {
   }
   function handleChangeLogin(e: Event) {
     e.preventDefault()
-    dataLogin.loginValue = (e.target as HTMLInputElement).value
+    dataLogin.login = (e.target as HTMLInputElement).value
   }
   function handleBlurLogin(e: Event) {
     e.preventDefault()
@@ -33,7 +34,7 @@ export function loginHtml() {
   }
 
   const propsInputFormPass = [
-    'pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.passValue, true
+    'pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.password, true
   ]
   const propsEventInputFormPass = {
     input: handleChangePass,
@@ -41,7 +42,7 @@ export function loginHtml() {
   }
   function handleChangePass(e: Event) {
     e.preventDefault()
-    dataLogin.passValue = (e.target as HTMLInputElement).value
+    dataLogin.password = (e.target as HTMLInputElement).value
   }
   function handleBlurPass(e: Event) {
     e.preventDefault()
@@ -60,11 +61,7 @@ export function loginHtml() {
 
   function handleSubmitFormLogin(e: Event) {
     e.preventDefault()
-    if (dataLogin.loginValue.trim() === '1' && dataLogin.passValue.trim() === '1') {
-      setPageRender('chats')
-      render()
-    }
-    console.log(dataLogin)
+    apiAuthLogin(dataLogin);
   }
 
   const propsButtonLink = ['registrationButton', 'Нет аккаунта?', true]
@@ -72,8 +69,7 @@ export function loginHtml() {
     click: handleRedirectRegistration,
   }
   function handleRedirectRegistration() {
-    setPageRender('registration')
-    render()
+    navigate('/sign-up');
   }
 
   login.prototype.block('#app', [], {})
