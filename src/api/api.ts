@@ -170,15 +170,19 @@ export class HTTPTransport {
         err();
         xhr.withCredentials = true;
 
-        xhr.setRequestHeader('Content-Type', 'multipart/form-data')
 
-        const fileInput = document.querySelector('input[type=file]');
-        // console.log(fileInput.files[0])
-        const file = fileInput.files[0];
-        // console.log(file)
-        const formdata = new FormData();
-        formdata.append('avatar', file);
-        xhr.send(formdata);
+        // разкомментить
+        // xhr.setRequestHeader('Content-Type', 'multipart/form-data')
+
+        // const fileInput = document.querySelector('input[type=file]');
+        // // console.log(fileInput.files[0])
+        // const file = fileInput.files[0];
+        // // console.log(file)
+        // const formdata = new FormData();
+        // formdata.append('avatar', file);
+        // xhr.send(formdata);
+
+
         // xhr.setRequestHeader('Accept', 'application/json')
         // xhr.send(new FormData(data) as FormData);
         // if (data?.type) {
@@ -190,8 +194,10 @@ export class HTTPTransport {
         // } else {
         //   console.log('2')
           // console.log(data)
-          // xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
-          // xhr.send(JSON.stringify(data))
+
+          // закомментить после входа
+          xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8')
+          xhr.send(JSON.stringify(data))
         // }
         // xhr.send(data);
       // }
