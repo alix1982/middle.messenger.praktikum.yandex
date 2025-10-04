@@ -4,7 +4,7 @@ import { IDataChatApi } from '../../../../utils/constant';
 chatContent.prototype.block = block as ()=>void;
 
 export function chatContent( id: number, dataMessege: IDataChatApi) {
-
+  console.log(id)
   return `
     <header class='chatContent__header' id='chatContent__header'>
       <article class='chatContent__user'>

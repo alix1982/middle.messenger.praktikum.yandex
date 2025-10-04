@@ -26,6 +26,7 @@ let socketStatus:string = 'close';
 let chatMessagesWS:[{}] = [{}];
 
 export function openMessege(e: Event, item: HTMLButtonElement, dataMessege:IDataChatApi) {
+  console.log(e)
   idChatSelected = (item.attributes as IButtonElement).id.value;
   idChat = Number(idChatSelected.slice(15));
 

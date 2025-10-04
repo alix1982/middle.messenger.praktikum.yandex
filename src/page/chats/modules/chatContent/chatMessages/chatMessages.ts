@@ -6,7 +6,7 @@ chatMessages.prototype.block = block as ()=>void;
 
 // export function chatContent( id:string, chat: [IDataChat]) {
 export function chatMessages( id:number, messages: [] ) {
-
+  console.log(id)
   const messagesSort = (messages as IMesseges[]).sort(
     (a: IMesseges, b: IMesseges) =>
       Math.floor(new Date(a.time).getTime()) - Math.floor(new Date(b.time).getTime())
