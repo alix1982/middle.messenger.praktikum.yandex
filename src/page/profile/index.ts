@@ -1,5 +1,8 @@
-import {profile} from './profile'
+import {profile} from './profile';
+import avatarDefault from '../../../static/img/avatarDefault.svg';
+
 import {
+  BASE_URL,
   dataInputsDisebledProfile,
   dataInputsFixPassword,
   dataInputsFixProfile,
@@ -60,12 +63,7 @@ export function profileHtml() {
     repeatNewPassword: '',
   }
 
-  // console.log(dataProfile);
-
   let profilePage = 'main' // main, fixData, fixPass
-
-  // function transitionRout(rout: string) {
-
 
   function renderProfile() {
 
@@ -84,6 +82,11 @@ export function profileHtml() {
 
     renderInput();
     renderButton();
+
+    const avatarElement = document.querySelector('.profile__avatar') as HTMLImageElement;
+    const avatar = JSON.parse(localStorage.getItem('dataUser') as string).avatar
+    avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): avatarDefault
+    // BASE_URL + '/resources' + JSON.parse(localStorage.getItem('dataUser') as string).avatar;
 
     profilePage === 'fixData' && inputAvatarHtml('profile__formAvatar')
   }

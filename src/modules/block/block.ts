@@ -52,12 +52,10 @@ export function block(
     propsEvent: propsEvent,
     propsEventBus: propsEventBus,
   }
-  // console.log(tagName)
   const elementFn = this.constructor;
   let element: HTMLElement;
 
   function _renderContentHandlebars(contentId: string, props: string[]) {
-    // console.log(contentId);
 
     contentId === '#app' && _removeEvents();
     // console.log(meta.isAddContent)
@@ -129,99 +127,4 @@ export function block(
       })
     }
   }
-  // _addEventsBlock()
-  // _registerEvents()
-
-  // ----------------------------------------------------------------
-
-  // function _createResources() {
-  //     const { tagName } = this._meta;
-  //     this._element = _createDocumentElement(tagName);
-  // }
-
-  // function init() {
-  //     _createResources();
-  //     // eventBusBlock.emitEvent(EVENTS.FLOW_RENDER);
-  // }
-
-  // function _componentDidMount() {
-  //     componentDidMount();
-  // }
-
-  // function componentDidMount() {}
-
-  // function dispatchComponentDidMount() {
-  //     this._eventBus().emit(EVENTS.FLOW_CDM);
-  // }
-
-  // function _componentDidUpdate(oldProps: {}, newProps:{}) {
-  //     // ...
-  // }
-
-  // function componentDidUpdate(oldProps: {}, newProps: {}) {
-  //     return true;
-  // }
-
-  // const setProps = (nextProps: {}) => {
-  //     if (!nextProps) {
-  //     return;
-  //     }
-
-  //     Object.assign(this.props, nextProps);
-  // };
-
-  // function getElement() {
-  //     return this._element;
-  // }
-
-  // function _render() {
-  //     const block = render();
-  //     // Это небезопасный метод для упрощения логики
-  //     // Используйте шаблонизатор из npm или напишите свой безопасный
-  //     // Нужно компилировать не в строку (или делать это правильно),
-  //     // либо сразу превращать в DOM-элементы и возвращать из compile DOM-ноду
-  //     this._element.innerHTML = block;
-  // }
-
-  // // Переопределяется пользователем. Необходимо вернуть разметку
-  // function render() {}
-
-  // function getContent() {
-  //     return this.element;
-  // }
-
-  // function _makePropsProxy(props:{}) {
-  //     // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
-  //     const self = this;
-
-  //     return new Proxy(props, {
-  //         get(target, prop) {
-  //             const value = target[prop];
-  //             return typeof value === 'function' ? value.bind(target) : value;
-  //         },
-  //         set(target, prop, value) {
-  //             const oldTarget = { ...target };
-  //             target[prop] = value;
-  //             self.eventBus().emit(EVENTS.FLOW_CDU, oldTarget, target);
-  //             return true;
-  //         },
-  //         deleteProperty() {
-  //             throw new Error('нет доступа');
-  //         },
-  //     });
-  // }
-
-  // function _createDocumentElement(tagName:string) {
-  //     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-  //     return document.createElement(tagName);
-  // }
-
-  //   show() {
-  //     this.getContent().style.display = "block";
-  //   }
-
-  //   hide() {
-  //     this.getContent().style.display = "none";
-  //   }
-  // return {renderContentHandlebars}
 }
