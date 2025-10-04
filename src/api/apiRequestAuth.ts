@@ -24,12 +24,12 @@ export function apiAuthRegistr (dataRequest:{}) {
       })
 }
 
-export function apiAuthLogin (dataRequest:{}) {
+export async function apiAuthLogin (dataRequest:{}) {
   new HTTPTransport()
     .post(`${BASE_URL}/auth/signin`, {data: dataRequest})
       .then((res)=> {
         if (res.status === 200) {
-            apiAuthInfo(true)
+          apiAuthInfo(true)
         } else {
           logout();
           throw new Error('error login')
@@ -42,23 +42,25 @@ export function apiAuthLogin (dataRequest:{}) {
 
 export function apiAuthInfo (isRedirect = false) {
   console.log('user');
-  new HTTPTransport()
-    .get(`${BASE_URL}/auth/user`)
-      .then((res)=> {
-        if (res.status === 200) {
-          localStorage.setItem('dataUser', res.response);
-          localStorage.setItem('auth', 'Aberto');
-        } else {
-          logout();
-          throw new Error('error request user')
-        }
-      })
-      .then(() => {
-        isRedirect && navigate('messenger');
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
+  return new Promise(() => {
+    new HTTPTransport()
+      .get(`${BASE_URL}/auth/user`)
+        .then((res)=> {
+          if (res.status === 200) {
+            localStorage.setItem('dataUser', res.response);
+            localStorage.setItem('auth', 'Aberto');
+          } else {
+            logout();
+            throw new Error('error request user')
+          }
+        })
+        .then(() => {
+          isRedirect && navigate('messenger');
+        })
+        .catch((err)=>{
+          console.log(err)
+        })
+  })
 }
 
 export function apiAuthLogout () {

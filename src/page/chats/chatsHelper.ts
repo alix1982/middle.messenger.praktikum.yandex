@@ -8,7 +8,7 @@ import { chatFormAddUser } from "./modules/chatContent/chatFormAddUser/chatFormA
 import { chatFormControl } from "./modules/chatContent/chatFormControl/chatFormControl";
 import { chatMessages } from "./modules/chatContent/chatMessages/chatMessages";
 
-let userId = JSON.parse(localStorage.getItem('dataUser') as string).id;
+let userId = JSON.parse(localStorage.getItem('dataUser') as string)?.id;
 let idChatSelected = '';
 let idChat = 0;
 // let inputSearchValue = '';

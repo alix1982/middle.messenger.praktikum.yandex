@@ -52,7 +52,6 @@ export function block(
     propsEvent: propsEvent,
     propsEventBus: propsEventBus,
   }
-  // debugger;
   // console.log(tagName)
   const elementFn = this.constructor;
   let element: HTMLElement;

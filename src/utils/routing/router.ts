@@ -9,13 +9,12 @@ import { navigate } from "./navigate";
 // import { TPath } from "./navigate";
 
 export function router() {
-  // const pageRender = path.slice(1);
-  // localStorage.getItem('auth') === 'Aberto' ?
-  //       navigate('/messenger') :
-  //       navigate('/');
-  let pageRender = window.location.pathname.slice(1)
-  console.log(pageRender)
+
+  let pageRender = window.location.pathname.slice(1);
+
+  console.log(pageRender);
   if (pageRender === '') {
+    // loginHtml();
     localStorage.getItem('auth') === 'Aberto' ?
       navigate('/messenger') :
       loginHtml();
@@ -24,11 +23,13 @@ export function router() {
       navigate('/messenger') :
       registrationHtml();
   } else if (pageRender === 'settings') {
+    // profileHtml()
     localStorage.getItem('auth') === 'Aberto' ?
       profileHtml() :
       navigate('/');
       // registrationHtml();
   } else if (pageRender === 'messenger') {
+    // chatsHtml()
     localStorage.getItem('auth') === 'Aberto' ?
       chatsHtml() :
       navigate('/');
