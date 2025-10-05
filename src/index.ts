@@ -18,32 +18,6 @@ import { router } from "./utils/routing/router";
 
 export const eventBusData = eventBus();
 
-// const testLohin = 'a2'
-// const objMocRegistr = {
-//   "first_name": "alix",
-//   "second_name": "Nov",
-//   "login": `${testLohin}`,
-//   "email": `${testLohin}@a19.ru`,
-//   "password": "a19",
-//   "phone": "89998887766"
-// }
-// const objMocLogin = {
-//   "login": "a194",
-//   "password": "a19",
-// }
-// user;
-// userRegistr;
-// console.log(dataUser)
-
-// apiAuthLogout();
-
-// apiUserRegistr(objMocRegistr);
-// apiUserLogin(objMocLogin);
-// apiUserInfo()
-// export function setPageRender(page: string) {
-//     pageRender = page
-// };
-
 // export function render() {
 //     console.log(pageRender)
 //     if (pageRender === '') {
@@ -72,20 +46,12 @@ export const eventBusData = eventBus();
 // }
 
 // function renderPageMenu(page: string) {
-// function renderPageMenu() {
 //     // setPageRender(page);
 //     console.log('1')
 //     router()
 //     // render();
 // }
 
-// export function mainHtml() {
-    document.addEventListener('DOMContentLoaded', () => {
-      router();
-      // localStorage.getItem('auth') === 'Aberto' &&
-      // (window.location.pathname === '/' ||
-      // window.location.pathname === '/sign-up')  ?
-      //   navigate('/messenger') :
-      //   navigate('/');
-    })
-// }
+  document.addEventListener('DOMContentLoaded', () => {
+    router();
+  })

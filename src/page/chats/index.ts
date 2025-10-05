@@ -13,10 +13,16 @@ import { openMessege } from './chatsHelper'
 
 export function chatsHtml() {
   let inputCreateChatValue = '';
+  let isValidCreateChat = false;
   let dataChats = [{}];
 
+  function validFormCreateChat() {
+    isValidCreateChat = validationMessege(inputCreateChatValue);
+    return isValidCreateChat;
+  }
+
   // кнопка редиректа в профиль
-  const propsButton = ['profileButton', 'Профиль &gt; ', true]
+  const propsButton = ['profileButton', 'Профиль &gt; ', 'button', false, true]
   const propsEventButton = {
     click: handleTransitionProfile,
   }
@@ -28,12 +34,13 @@ export function chatsHtml() {
   const propsFormSearch = ['chats_searchForm', true]
   const propsEventFormSearch = {
     submit: async function  handleSubmitSearch(e: Event) {
-                e.preventDefault();
-                // console.log(inputSearchValue)
-                console.log(inputCreateChatValue)
+              e.preventDefault();
+              // console.log(inputSearchValue)
+              console.log(isValidCreateChat)
+              if (isValidCreateChat) {
                 await apiMessageCreateChat({title: inputCreateChatValue});
-                console.log('ok');
                 await renderButtonPoint();
+              }
             },
   }
 
@@ -57,16 +64,16 @@ export function chatsHtml() {
   const propsEventInputCreateChat = {
     input: function handleChangeCreateChat(e: Event) {
       e.preventDefault();
-      inputCreateChatValue = (e.target as HTMLInputElement).value
-      // console.log(inputCreateChatValue)
+      inputCreateChatValue = (e.target as HTMLInputElement).value;
+      validFormCreateChat();
     },
     blur: function handleChangeCreateChat(e: Event) {
-
+      e.preventDefault();
+      validFormCreateChat();
       const element = e.target as HTMLInputElement
-      const isValidate = validationMessege(element.value)
-            !isValidate
-              ? element?.classList.add('input__error')
-              : element?.classList.remove('input__error')
+      !isValidCreateChat
+        ? element?.classList.add('input__error')
+        : element?.classList.remove('input__error')
     },
   }
   // блок со списком чатов
@@ -90,15 +97,14 @@ export function chatsHtml() {
     // console.log('renderButtonPoint')
     await apiMessageChats()
       .then((res) => {
-        // console.log(res);
         dataChats = res as [{id: number}]
       })
     ;
-    console.log(dataChats)
+    // console.log(dataChats)
 
     dataChats.length > 0 &&
       (dataChats.forEach((item:IDataChatApi, index: number) => {
-        console.log(item)
+        // console.log(item)
         // пропсы пункта (чата) в блоке списка чатов
         const propsChatPoint = [`chatPoint${item.id}`, index === 0 ? false : true];
 

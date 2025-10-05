@@ -16,12 +16,47 @@ export function registrationHtml() {
   const dataRegistration = {
     email: '',
     login: '',
-    // pass: '',
     first_name: '',
     second_name: '',
     phone: '',
     password: '',
-    passwordReplay: '',
+    // passwordReplay: '',
+  }
+  let passwordReplay = ''
+
+  let isValidEmail = false;
+  let isValidLogin= false;
+  let isValidFirstName = false;
+  let isValidSecondName= false;
+  let isValidPhone = false;
+  let isValidPassword= false;
+  let isValidPasswordReplay = false;
+
+  function validFormRegistration() {
+    const buttonSubmitElement =
+      document.querySelector('#submitFormRegistration') as HTMLButtonElement;
+
+    isValidEmail = validationEmail(dataRegistration.email);
+    isValidLogin = validationLogin(dataRegistration.login);
+    isValidFirstName = validationName(dataRegistration.first_name);
+    isValidSecondName = validationName(dataRegistration.second_name);
+    isValidPhone = validationPhone(dataRegistration.phone);
+    isValidPassword = validationPassword(dataRegistration.password);
+    isValidPasswordReplay =
+      (validationPassword(passwordReplay) && dataRegistration.password === passwordReplay);
+
+    let isValidForm =
+      isValidEmail &&
+      isValidLogin &&
+      isValidFirstName &&
+      isValidSecondName &&
+      isValidPhone &&
+      isValidPassword &&
+      isValidPasswordReplay &&
+      (dataRegistration.password === passwordReplay)
+
+    buttonSubmitElement.disabled = !(isValidForm);
+    return isValidForm;
   }
 
   // email
@@ -30,15 +65,16 @@ export function registrationHtml() {
   ]
   const propsEventInputFormEmail = {
     input: function handleChangeEmail(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       dataRegistration.email = (e.target as HTMLInputElement).value
+      validFormRegistration();
     },
     blur: function handleBlurEmail(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationEmail(element.value)
-      !isValidate
+      !isValidEmail
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -50,15 +86,16 @@ export function registrationHtml() {
   ]
   const propsEventInputFormLogin = {
     input: function handleChangeLogin(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       dataRegistration.login = (e.target as HTMLInputElement).value
+      validFormRegistration();
     },
     blur: function handleBlurLogin(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationLogin(element.value)
-      !isValidate
+      !isValidLogin
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -75,15 +112,16 @@ export function registrationHtml() {
   ]
   const propsEventInputFormFirstName = {
     input: function handleChangeFirstName(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       dataRegistration.first_name = (e.target as HTMLInputElement).value
+      validFormRegistration();
     },
     blur: function handleBlurFirstName(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationName(element.value)
-      !isValidate
+      !isValidFirstName
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -100,15 +138,16 @@ export function registrationHtml() {
   ]
   const propsEventInputFormSecondName = {
     input: function handleChangeSecondName(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       dataRegistration.second_name = (e.target as HTMLInputElement).value
+      validFormRegistration();
     },
     blur: function handleBlurSecondName(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationName(element.value)
-      !isValidate
+      !isValidSecondName
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -125,15 +164,16 @@ export function registrationHtml() {
   ]
   const propsEventInputFormPhone = {
     input: function handleChangePhone(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
       dataRegistration.phone = (e.target as HTMLInputElement).value
+      validFormRegistration();
     },
     blur: function handleBlurPhone(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationPhone(element.value)
-      !isValidate
+      !isValidPhone
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -150,15 +190,22 @@ export function registrationHtml() {
   ]
   const propsEventInputFormPass = {
     input: function handleChangePass(e: Event) {
-      e.preventDefault()
-      dataRegistration.password = (e.target as HTMLInputElement).value
+      e.preventDefault();
+      const inputElement = e.target as HTMLInputElement
+      const passReplayElement = document.querySelector('#passwordReplay') as HTMLInputElement;
+      const errElementReplay = passReplayElement.nextElementSibling as HTMLElement;
+      (inputElement.value !== passReplayElement.value)
+        ? errElementReplay?.classList.add('inputForm__error_active')
+        : errElementReplay?.classList.remove('inputForm__error_active')
+      dataRegistration.password = inputElement.value;
+      validFormRegistration();
     },
     blur: function handleBlurPass(e: Event) {
-      e.preventDefault()
+      e.preventDefault();
+      validFormRegistration();
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationPassword(element.value)
-      !isValidate
+      !isValidPassword
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
@@ -168,28 +215,46 @@ export function registrationHtml() {
   const propsInputFormPassReplay = [
     'passwordReplay',
     'Пароль (ещё раз)',
-    'Пароли не совпадают',
+    'Неверный пароль',
     'text',
-    dataRegistration.passwordReplay,
+    passwordReplay,
     true
   ]
   const propsEventInputFormPassReplay = {
     input: function handleChangePassReplay(e: Event) {
-      e.preventDefault()
-      dataRegistration.passwordReplay = (e.target as HTMLInputElement).value
+      e.preventDefault();
+      const inputElement = e.target as HTMLInputElement
+      const passReplayElement = document.querySelector('#password') as HTMLInputElement;
+      const errElementReplay = inputElement.nextElementSibling as HTMLElement;
+      (inputElement.value !== passReplayElement.value)
+        ? errElementReplay?.classList.add('inputForm__error_active')
+        : errElementReplay?.classList.remove('inputForm__error_active')
+      passwordReplay = inputElement.value
+      validFormRegistration();
     },
-    blur: function handleBlurPass(e: Event) {
-      e.preventDefault()
+    blur: function handleBlurPassReplay(e: Event) {
+      e.preventDefault();
+      validFormRegistration();
+      console.log(e)
       const element = e.target as HTMLInputElement
       const errElement = element.nextElementSibling
-      const isValidate = validationPassword(element.value)
-      !isValidate
+      !isValidPasswordReplay
         ? errElement?.classList.add('inputForm__error_active')
         : errElement?.classList.remove('inputForm__error_active')
     },
   }
 
-  const propsButton = ['submitFormRegistration', 'Зарегистрироваться', 'submit', true]
+  const propsButton = [
+    'submitFormRegistration', 'Зарегистрироваться', 'submit',
+    !(isValidEmail &&
+      isValidLogin &&
+      isValidFirstName &&
+      isValidSecondName &&
+      isValidPhone &&
+      isValidPassword &&
+      isValidPasswordReplay),
+    true
+  ]
   const propsEventButton = {
     click: handleSubmitFormRegistration,
   }

@@ -10,6 +10,17 @@ export function loginHtml() {
   const dataLogin = {
     login: '',
     password: '',
+  };
+  let isValidLogin = false;
+  let isValidPass= false;
+
+  function validFormLogin() {
+    const buttonSubmitElement = document.querySelector('#submitFormLogin') as HTMLButtonElement;
+    isValidLogin = validationLogin(dataLogin.login);
+    isValidPass = validationPassword(dataLogin.password);
+    let isValidForm = isValidLogin && isValidPass
+    buttonSubmitElement.disabled = !(isValidForm);
+    return isValidForm;
   }
 
   const propsInputFormLogin = [
@@ -21,16 +32,17 @@ export function loginHtml() {
   }
   function handleChangeLogin(e: Event) {
     e.preventDefault()
-    dataLogin.login = (e.target as HTMLInputElement).value
+    dataLogin.login = (e.target as HTMLInputElement).value;
+    validFormLogin();
   }
   function handleBlurLogin(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
+    validFormLogin();
     const element = e.target as HTMLInputElement
     const errElement = element.nextElementSibling
-    const isValidate = validationLogin(element.value)
-    !isValidate
+    !isValidLogin
       ? errElement?.classList.add('inputForm__error_active')
-      : errElement?.classList.remove('inputForm__error_active')
+      : errElement?.classList.remove('inputForm__error_active');
   }
 
   const propsInputFormPass = [
@@ -41,27 +53,29 @@ export function loginHtml() {
     blur: handleBlurPass,
   }
   function handleChangePass(e: Event) {
-    e.preventDefault()
-    dataLogin.password = (e.target as HTMLInputElement).value
+    e.preventDefault();
+    dataLogin.password = (e.target as HTMLInputElement).value;
+    validFormLogin();
   }
   function handleBlurPass(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
+    validFormLogin();
     const element = e.target as HTMLInputElement
     const errElement = element.nextElementSibling
-    const isValidate = validationPassword(element.value)
-    !isValidate
+    !isValidPass
       ? errElement?.classList.add('inputForm__error_active')
-      : errElement?.classList.remove('inputForm__error_active')
+      : errElement?.classList.remove('inputForm__error_active');
   }
 
-  const propsButton = ['loginButton', 'Войти', 'submit', true]
+  const propsButton = ['submitFormLogin', 'Войти', 'submit', !(isValidLogin && isValidPass), true]
   const propsEventButton = {
     click: handleSubmitFormLogin,
   }
 
   function handleSubmitFormLogin(e: Event) {
-    e.preventDefault()
-    apiAuthLogin(dataLogin);
+    e.preventDefault();
+    (isValidLogin && isValidPass) &&
+      apiAuthLogin(dataLogin);
   }
 
   const propsButtonLink = ['registrationButton', 'Нет аккаунта?', true]

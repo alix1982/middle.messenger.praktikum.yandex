@@ -2,7 +2,7 @@ import { apiMessageAddUser, apiMessageGetToken } from "../../api/apiRequestMessa
 import { button } from "../../modules/button/button";
 import { input } from "../../modules/input/input";
 import { IDataChatApi } from "../../utils/constant";
-import { validationLogin, validationMessege } from "../../utils/validation";
+import { validationMessege } from "../../utils/validation";
 import { chatContent } from "./modules/chatContent/chatContent";
 import { chatFormAddUser } from "./modules/chatContent/chatFormAddUser/chatFormAddUser";
 import { chatFormControl } from "./modules/chatContent/chatFormControl/chatFormControl";
@@ -15,6 +15,19 @@ let idChat = 0;
 // let inputCreateChatValue = '';
 let inputAddUserValue = '';
 let inputMessegeValue = '';
+let isValidAddUser = false;
+let isValidMessage = false;
+
+function validFormAddUser() {
+  isValidAddUser = validationMessege(inputAddUserValue);
+  return isValidAddUser;
+}
+function validFormMessage() {
+  const buttonSubmitElement = document.querySelector('#messageButton') as HTMLButtonElement;
+  isValidMessage = validationMessege(inputMessegeValue);
+  buttonSubmitElement.disabled = !(isValidMessage);
+  return isValidMessage;
+}
 // let dataChats = [{}];
 
 interface IButtonElement extends NamedNodeMap {
@@ -39,12 +52,23 @@ export function openMessege(e: Event, item: HTMLButtonElement, dataMessege:IData
   const propsEventFormAddUser = {
     submit: function  handleSubmitAddUser(e: Event) {
                 e.preventDefault();
-                // console.log(inputSearchValue)
-                apiMessageAddUser(Number(inputAddUserValue), idChat)
-                const htmlTarget = e.target as HTMLFormElement;
-                const input = htmlTarget[0] as HTMLFormElement
-                input.value = '';
-                inputAddUserValue = '';
+                console.log('submit');
+                // apiMessageAddUser(Number(inputAddUserValue), idChat)
+                // const htmlTarget = e.target as HTMLFormElement;
+                // const input = htmlTarget[0] as HTMLFormElement
+                // input.value = '';
+                // inputAddUserValue = '';
+
+                if (isValidAddUser) {
+                  console.log(inputAddUserValue);
+
+                  apiMessageAddUser(Number(inputAddUserValue), idChat)
+
+                  const htmlTarget = e.target as HTMLFormElement;
+                  const input = htmlTarget.form[0] as HTMLFormElement
+                  input.value = '';
+                  inputAddUserValue = '';
+                }
             },
   }
 
@@ -52,22 +76,25 @@ export function openMessege(e: Event, item: HTMLButtonElement, dataMessege:IData
   const propsInputAddUser = ['addUser', 'text', 'ID ', true]
   const propsEventInputAddUser = {
     input: function handleChangeMessage(e: Event) {
-      e.preventDefault()
-      inputAddUserValue = (e.target as HTMLInputElement).value
-      console.log(inputAddUserValue)
+      e.preventDefault();
+      inputAddUserValue = (e.target as HTMLInputElement).value;
+      validFormAddUser();
+      // console.log(inputAddUserValue)
     },
     blur: function handleBlurMessage(e: Event) {
-          e.preventDefault()
+          e.preventDefault();
+          validFormAddUser()
           const element = e.target as HTMLInputElement
           // const errElement = element.nextElementSibling
-          const isValidate = validationLogin(element.value)
-          !isValidate
+          // const isValidate = validationLogin(element.value)
+          !isValidAddUser
             ? element?.classList.add('input__error')
             : element?.classList.remove('input__error')
     },
   }
 
   // пропсы формы отправки сообщений
+  // !!! не нужно !!!
   const propsFormControl = ['chat__controlForm', true]
   const propsEventFormControl = {
     submit: function  handleSubmitControl(e: Event) {
@@ -148,40 +175,42 @@ function _setToken(id: number) {
       });
 
       // пропсы кнопки отправки сообщения
-      const propsButtonMessage = ['messageButton', '', 'submit', true]
+      const propsButtonMessage = ['messageButton', '', 'submit', !isValidMessage, true]
       const propsEventButtonMessage = {
         click: handleSubmitMessage,
       }
       function handleSubmitMessage(e: Event) {
         e.preventDefault();
-        socketStatus === 'open' &&
-          socket.send(JSON.stringify({
-            content: inputMessegeValue,
-            type: 'message',
-          }));
+        if (socketStatus === 'open' && isValidMessage) {
+          socketStatus === 'open' &&
+            socket.send(JSON.stringify({
+              content: inputMessegeValue,
+              type: 'message',
+            }));
           const htmlTarget = e.target as HTMLFormElement;
           const input = htmlTarget.form[0] as HTMLFormElement
           input.value = '';
           inputMessegeValue = '';
-        // inputMessegeValue = (e.target as HTMLInputElement).value
-        // console.log(inputMessegeValue);
-
+        }
       }
 
       // пропсы инпута отпраки сообщения
       const propsInputMessage = ['message', 'text', 'Сообщение ']
       const propsEventInputMessage = {
         input: function handleChangeMessage(e: Event) {
-          e.preventDefault()
-          inputMessegeValue = (e.target as HTMLInputElement).value
-          console.log(inputMessegeValue)
+          e.preventDefault();
+          const element = e.target as HTMLInputElement;
+          inputMessegeValue = element.value;
+          validFormMessage();
+          !isValidMessage
+            ? element?.classList.add('input__error')
+            : element?.classList.remove('input__error')
         },
         blur: function handleBlurMessage(e: Event) {
-              e.preventDefault()
-              const element = e.target as HTMLInputElement
-              // const errElement = element.nextElementSibling
-              const isValidate = validationMessege(element.value)
-              !isValidate
+              e.preventDefault();
+              validFormMessage();
+              const element = e.target as HTMLInputElement;
+              !isValidMessage
                 ? element?.classList.add('input__error')
                 : element?.classList.remove('input__error')
         },
