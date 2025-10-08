@@ -81,3 +81,11 @@ export function validationMessege(str: string) {
     }
     return isName;
 }
+
+export function validationId(str: number) {
+    let isName = false;
+    if (typeof str === 'number' && str !== 0) {
+        isName = true;
+    }
+    return isName;
+}

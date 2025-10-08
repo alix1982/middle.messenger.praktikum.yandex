@@ -37,7 +37,7 @@ export function inputProfile( id:string,
         id=${id}
         placeholder=${placeholder}
         ${disabled ? 'disabled' : ''}
-        value=${value}
+        ${value !== '' && 'value='+value}
       />
     </label>
   `

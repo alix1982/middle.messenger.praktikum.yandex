@@ -83,13 +83,19 @@ export function block(
   function _addEventsBlock(): void {
     // console.log(element)
     const { propsEvent = {} } = meta
-
+    // console.log(propsEvent)
+    // console.log(props)
     Object.keys(propsEvent).forEach((eventName) => {
+      // console.log(element);
+      // console.log('----')
       if (element) {
-        element.addEventListener(eventName as 'click' | 'change' | 'input', propsEvent[eventName])
+        element.addEventListener(
+          eventName as 'click' | 'change' | 'input' | 'submit', propsEvent[eventName]
+        )
         // element.setAttribute('data-event', eventName)
       }
     })
+    // console.log('--------------------------')
   }
 
   function _registerEvents() {
@@ -121,7 +127,7 @@ export function block(
       listener[key].forEach((event) => {
         const eventElement = document.querySelector(`#${event.elementId}`) as HTMLElement
         eventElement.removeEventListener(
-          key as 'click' | 'change' | 'input', event.listenerElement
+          key as 'click' | 'change' | 'input' | 'submit', event.listenerElement
         );
         eventBusData.offEvent(key, event.listenerElement)
       })

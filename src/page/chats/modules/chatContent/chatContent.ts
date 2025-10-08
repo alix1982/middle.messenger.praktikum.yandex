@@ -13,6 +13,14 @@ export function chatContent( id: number, dataMessege: IDataChatApi) {
       </article>
 
     </header>
+    <article class='chatConten__users'>
+      <h3 class='chatConten__userPointHeading'>
+        Пользователи в чате:
+      </h3>
+      <ul class='chatContent__listUsers' id='chatContent__listUsers'>
+
+      </ul>
+    </article>
     <ul class='chatContent__messages' id='chatContent__messages'>
 
     </ul>

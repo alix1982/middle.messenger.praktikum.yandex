@@ -30,23 +30,6 @@ import { logout } from '../../api/apiRequestAuth'
 
 export function profileHtml() {
 
-  // interface IDataProfile {
-  //   email: string
-  //   login: string
-  //   first_name: string
-  //   second_name: string
-  //   display_name: string
-  //   phone: string
-  // }
-
-  // const dataProfile:IDataProfile = {
-  //   email: userData.email,
-  //   login: userData.login,
-  //   first_name: userData.first_name,
-  //   second_name: userData.second_name,
-  //   display_name: userData.name,
-  //   phone: userData.phone,
-  // }
   const dataProfile = localStorage.getItem('dataUser') !== null ?
       JSON.parse(localStorage.getItem('dataUser') as string) :
       {
@@ -62,6 +45,62 @@ export function profileHtml() {
     newPassword: '',
     repeatNewPassword: '',
   }
+
+  let isValidEmail = false;
+  let isValidLogin = false;
+  let isValidFirstName = false;
+  let isValidSecondName = false;
+  let isValidDisplayName = false;
+  let isValidPhone = false;
+
+  let isValidOldPassword = false;
+  let isValidNewPassword = false;
+  let isValidRepeatNewPassword = false;
+
+  function validFormProfileFixData() {
+    const buttonSubmitElement =
+      document.querySelector('#fixDataProfile') as HTMLButtonElement;
+
+    isValidEmail = validationEmail(dataProfile.email);
+    isValidLogin = validationLogin(dataProfile.login);
+    isValidFirstName = validationName(dataProfile.first_name);
+    isValidSecondName = validationName(dataProfile.second_name);
+    isValidDisplayName = validationName(dataProfile.display_name);
+    isValidPhone = validationPhone(dataProfile.phone);
+
+    let isValidFormFixData =
+      isValidEmail &&
+      isValidLogin &&
+      isValidFirstName &&
+      isValidSecondName &&
+      isValidDisplayName &&
+      isValidPhone
+
+    buttonSubmitElement.disabled = !(isValidFormFixData);
+    return isValidFormFixData;
+  }
+
+  function validFormProfileFixPass() {
+    const buttonSubmitElement =
+      document.querySelector('#fixPassProfile') as HTMLButtonElement;
+
+    isValidOldPassword = validationPassword(dataProfilePass.oldPassword);
+    isValidNewPassword = validationPassword(dataProfilePass.newPassword);
+    isValidRepeatNewPassword =
+      (validationPassword(dataProfilePass.repeatNewPassword) &&
+          dataProfilePass.newPassword === dataProfilePass.repeatNewPassword
+      );
+
+    let isValidFormFixPass =
+      isValidOldPassword &&
+      isValidNewPassword &&
+      isValidRepeatNewPassword;
+      (dataProfilePass.newPassword === dataProfilePass.repeatNewPassword)
+
+    buttonSubmitElement.disabled = !(isValidFormFixPass);
+    return isValidFormFixPass;
+  }
+
 
   let profilePage = 'main' // main, fixData, fixPass
 
@@ -108,20 +147,23 @@ export function profileHtml() {
         const propsEventInputProfileFixData = {
           input: function handleChange(e: Event) {
             e.preventDefault();
-            dataProfile[item.name] = (e.target as HTMLInputElement).value
+            dataProfile[item.name] = (e.target as HTMLInputElement).value;
+            validFormProfileFixData();
           },
           blur: function handleBlur(e: Event) {
+            e.preventDefault();
+            validFormProfileFixData();
             const element = e.target as HTMLInputElement
             const arrErrElement = element.labels
             const errElement = arrErrElement?.length ? arrErrElement[0] : element;
-            const isValidate =
-              name === 'email' ? validationEmail(element.value) :
-                name === 'login' ? validationLogin(element.value) :
-                name === 'first_name' ? validationName(element.value) :
-                name === 'second_name' ? validationName(element.value) :
-                name === 'display_name' ? validationName(element.value) :
-                name === 'phone' && validationPhone(element.value);
-            !isValidate
+
+            !(name === 'email' ? isValidEmail :
+                name === 'login' ? isValidLogin :
+                name === 'first_name' ? isValidFirstName :
+                name === 'second_name' ? isValidSecondName :
+                name === 'display_name' ? isValidDisplayName :
+                name === 'phone' && isValidPhone
+            )
               ? errElement?.classList.add('inputProfile_error')
               : errElement?.classList.remove('inputProfile_error')
               },
@@ -146,15 +188,43 @@ export function profileHtml() {
         const propsEventInputProfileFixPass = {
           input: function handleChange(e: Event) {
             e.preventDefault();
-            dataProfilePass[item.name] = (e.target as HTMLInputElement).value
+            if (name === 'newPassword') {
+              const inputElement = e.target as HTMLInputElement;
+
+              const passReplayElement =
+                document.querySelector('#profileInputPass3') as HTMLInputElement;
+              const arrErrElement = passReplayElement.labels
+              const errElementReplay = arrErrElement?.length ? arrErrElement[0] : inputElement;
+
+              (inputElement.value !== passReplayElement.value)
+                ? errElementReplay?.classList.add('inputProfile_error')
+                : errElementReplay?.classList.remove('inputProfile_error');
+            }
+            if (name === 'repeatNewPassword') {
+              const inputElement = e.target as HTMLInputElement
+              const passReplayElement =
+                document.querySelector('#profileInputPass2') as HTMLInputElement;
+              const arrErrElement = inputElement.labels
+              const errElementReplay = arrErrElement?.length ? arrErrElement[0] : inputElement;
+
+              (inputElement.value !== passReplayElement.value)
+                ? errElementReplay?.classList.add('inputProfile_error')
+                : errElementReplay?.classList.remove('inputProfile_error')
+            }
+
+            dataProfilePass[item.name] = (e.target as HTMLInputElement).value;
+            validFormProfileFixPass();
           },
           blur: function handleBlur(e: Event) {
-            const element = e.target as HTMLInputElement
+            e.preventDefault();
+            validFormProfileFixPass();
+            const element = e.target as HTMLInputElement;
             const arrErrElement = element.labels
             const errElement = arrErrElement?.length ? arrErrElement[0] : element;
-            const isValidate = validationPassword(element.value)
-
-            !isValidate
+            !(name === 'oldPassword' ? isValidOldPassword :
+                name === 'newPassword' ? isValidNewPassword :
+                name === 'repeatNewPassword' && isValidRepeatNewPassword
+            )
               ? errElement?.classList.add('inputProfile_error')
               : errElement?.classList.remove('inputProfile_error')
               },
@@ -192,24 +262,39 @@ export function profileHtml() {
 
   function renderButton() {
     if (profilePage === 'fixData') {
-      const propsButtonProfileFixData = ['fixDataProfile', 'Сохранить', 'submit', true]
+      const propsButtonProfileFixData = [
+        'fixDataProfile', 'Сохранить', 'submit',
+        !(isValidEmail &&
+          isValidLogin &&
+          isValidFirstName &&
+          isValidSecondName &&
+          isValidPhone &&
+          isValidDisplayName
+        ),
+        true
+      ]
       const propsEventButtonProfileFixData = {
         click: function handleClickFormFixData(e: Event) {
                 e.preventDefault();
                 apiUserUpdate(dataProfile);
-                // console.log(dataProfile)
               },
         submit: function handleSubmitFormFixData(e: Event) {
                 e.preventDefault();
                 apiUserUpdate(dataProfile);
-                // console.log(dataProfile)
               },
       }
       button.prototype.block(
         '.profile__buttons', propsButtonProfileFixData, propsEventButtonProfileFixData
       )
     } else if (profilePage === 'fixPass') {
-      const propsButtonProfileFixPass = ['fixPassProfile', 'Сохранить', 'submit', true]
+      const propsButtonProfileFixPass = [
+        'fixPassProfile', 'Сохранить', 'submit',
+        !(isValidOldPassword &&
+          isValidNewPassword &&
+          isValidRepeatNewPassword
+        ),
+        true
+      ]
       const propsEventButtonProfileFixPass = {
         click: function handleClickFormFixPass(e: Event) {
                 e.preventDefault()
@@ -247,6 +332,9 @@ export function profileHtml() {
       ]
       const propsEventButtonProfileTranslateFixPass = {
         click:  function fixPassword() {
+                  dataProfilePass.oldPassword = '';
+                  dataProfilePass.newPassword = '';
+                  dataProfilePass.repeatNewPassword = '';
                   profilePage = 'fixPass'
                   renderProfile()
                 }

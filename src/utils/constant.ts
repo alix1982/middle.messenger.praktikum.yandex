@@ -24,6 +24,25 @@ export interface IDataChatApi {
   avatar?: string | null
   last_message: ILast_MessegeApi
 }
+export interface IDataUsersChat {
+  id: number
+  first_name: string
+  second_name: string
+  display_name: string
+  login: string
+  role: string
+  avatar?: string | null
+}
+export interface IDataUserActive {
+  avatar?: string | null
+  display_name: string | null
+  email: string
+  first_name: string
+  second_name: string
+  id: number
+  login: string
+  phone: string
+}
 export interface IDataChat {
   idChat: number
   name: string

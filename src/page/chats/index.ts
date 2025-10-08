@@ -17,7 +17,9 @@ export function chatsHtml() {
   let dataChats = [{}];
 
   function validFormCreateChat() {
+    const buttonSubmitElement = document.querySelector('#buttonCreateChat') as HTMLButtonElement;
     isValidCreateChat = validationMessege(inputCreateChatValue);
+    buttonSubmitElement.disabled = !(isValidCreateChat);
     return isValidCreateChat;
   }
 
@@ -31,14 +33,21 @@ export function chatsHtml() {
   }
 
   // пропсы формы поиска и добавления чатов
-  const propsFormSearch = ['chats_searchForm', true]
+  const propsFormSearch = ['chats__searchForm', true]
   const propsEventFormSearch = {
+    // submit: function(e:Event) {
+    //   e.preventDefault();
+    //   console.log('submit')
+    // }
     submit: async function  handleSubmitSearch(e: Event) {
               e.preventDefault();
-              // console.log(inputSearchValue)
-              console.log(isValidCreateChat)
               if (isValidCreateChat) {
                 await apiMessageCreateChat({title: inputCreateChatValue});
+                const htmlTarget = e.target as HTMLFormElement;
+                const input = htmlTarget.elements[0] as HTMLFormElement
+                input.value = '';
+                inputCreateChatValue = '';
+                validFormCreateChat();
                 await renderButtonPoint();
               }
             },
@@ -57,6 +66,24 @@ export function chatsHtml() {
   //   //             e.preventDefault();
   //   //             console.log(inputSearchValue)
   //   //         },
+  // }
+
+  // пропсы кнопки добавления пользователя
+  const propsButtonCreateChat = ['buttonCreateChat', '', 'submit', !isValidCreateChat, true]
+  // const propsEventButtonCreateUser = {
+  //   submit: handleSubmitCreateUser,
+  // }
+  // async function handleSubmitCreateUser(e: Event) {
+  //   e.preventDefault();
+  //   console.log('click button')
+  //   if (isValidCreateChat) {
+  //     // await apiMessageAddUser(Number(inputAddUserValue), idChat)
+  //     // const htmlTarget = e.target as HTMLFormElement;
+  //     // const input = htmlTarget.elements[0] as HTMLFormElement
+  //     // input.value = '';
+  //     // inputAddUserValue = '';
+  //     // renderUsers();
+  //   }
   // }
 
   // пропсы инпута добавления чата
@@ -88,7 +115,8 @@ export function chatsHtml() {
   // рендер формы поиска и добавления чата
   chatFormSearch.prototype.block('#chats__list', propsFormSearch, propsEventFormSearch)
   // input.prototype.block('#chats_searchForm', propsInputSearch, propsEventInputSearch)
-  input.prototype.block('#chats_searchForm', propsInputCreateChat, propsEventInputCreateChat)
+  input.prototype.block('#chats__searchForm', propsInputCreateChat, propsEventInputCreateChat);
+  button.prototype.block('#chats__searchForm', propsButtonCreateChat, {})
 
   // рендер блока со списком чатов
   chatsList.prototype.block('#chats__list', propsChatsList, {})

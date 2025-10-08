@@ -31,7 +31,8 @@ export function loginHtml() {
     blur: handleBlurLogin,
   }
   function handleChangeLogin(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
+    console.log(dataLogin)
     dataLogin.login = (e.target as HTMLInputElement).value;
     validFormLogin();
   }
@@ -54,6 +55,7 @@ export function loginHtml() {
   }
   function handleChangePass(e: Event) {
     e.preventDefault();
+    console.log(dataLogin)
     dataLogin.password = (e.target as HTMLInputElement).value;
     validFormLogin();
   }

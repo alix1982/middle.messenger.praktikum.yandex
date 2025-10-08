@@ -25,6 +25,7 @@
 @import url("page/chats/modules/chatsList/chatsList.css");
 @import url("page/chats/modules/chatPoint/chatPoint.css");
 @import url("page/chats/modules/chatContent/chatContent.css");
+@import url("page/chats/modules/chatContent/chatUser/chatUserPoint/chatUserPoint.css");
 @import url("page/chats/modules/chatContent/chatMessages/chatMessages.css");
 @import url("page/chats/modules/chatContent/chatMessage/chatMessage.css");
 
