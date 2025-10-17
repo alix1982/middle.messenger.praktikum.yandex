@@ -50,6 +50,15 @@
     background-size: contain;
 }
 
+.chatMessage__noRead {
+    width: 20px;
+    height: 10px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 .chatMessage__time {
     font-family: Inter, sans-serif;
     font-weight: 400;

@@ -26,7 +26,7 @@ export function inputProfile( id:string,
   { heading, name, type, placeholder, value, disabled }: IDataInputProfile
 
 ): string {
-
+  (value === null || value === undefined) && (value = "&nbsp;")
   return `
     <label class='inputProfile' id='inputProfile'>
       <span class='inputProfile__heading'>${heading}</span>
@@ -35,9 +35,9 @@ export function inputProfile( id:string,
         type=${type}
         name=${name}
         id=${id}
-        value=${value}
         placeholder=${placeholder}
         ${disabled ? 'disabled' : ''}
+        ${value !== '' && 'value='+value}
       />
     </label>
   `

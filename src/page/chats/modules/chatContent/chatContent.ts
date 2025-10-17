@@ -1,55 +1,31 @@
 import { block } from '../../../../modules/block/block';
-// import { input } from '../../../../modules/input/input'
-import { IDataChat, IMesseges, transformMonth } from '../../../../utils/constant'
-import { chatMessage } from './chatMessage/chatMessage'
+import { IDataChatApi } from '../../../../utils/constant';
 
 chatContent.prototype.block = block as ()=>void;
 
-export function chatContent( id:string, chat: [IDataChat]) {
+export function chatContent( id: number, dataMessege: IDataChatApi) {
   console.log(id)
-  const { name, messeges, avatarUser }: IDataChat = chat[0]
-  const messagesSort = (messeges as IMesseges[]).sort(
-    (a: IMesseges, b: IMesseges) => a.dateUnix - b.dateUnix
-  )
-
-  let renderMesseges = ''
-  let dateMessages = 0
-  let monthMessages = -1
-  messagesSort.map((messege: IMesseges) => {
-    const date = new Date(messege.dateUnix * 1000).getDate()
-    const month = new Date(messege.dateUnix * 1000).getMonth()
-
-    if (month !== monthMessages || date !== dateMessages) {
-      monthMessages = month
-      dateMessages = date
-
-      renderMesseges +=
-        `<li class='chatContent__contentTime'>${dateMessages}
-          ${transformMonth[monthMessages]}</li>`
-    }
-
-    return (renderMesseges += chatMessage(messege))
-  })
-
   return `
-    <header class='chatContent__header'>
+    <header class='chatContent__header' id='chatContent__header'>
       <article class='chatContent__user'>
-        <img class='chatContent__avatar' src=${avatarUser} alt='аватар'/>
-        <p class='chatContent__heading'>${name}</p>
+        <img class='chatContent__avatar' src=${dataMessege?.avatar} alt='аватар'/>
+        <p class='chatContent__heading'>${dataMessege?.title}</p>
       </article>
-      <button class='chatContent__menu' type='button'>
-      </button>
-    </header>
-    <ul class='chatContent__content'>
-      ${renderMesseges}
-    </ul>
-    <footer>
-      <form class='chatContent__control' id='chatContent__control'>
 
-      </form>
+    </header>
+    <article class='chatConten__users'>
+      <h3 class='chatConten__userPointHeading'>
+        Пользователи в чате:
+      </h3>
+      <ul class='chatContent__listUsers' id='chatContent__listUsers'>
+
+      </ul>
+    </article>
+    <ul class='chatContent__messages' id='chatContent__messages'>
+
+    </ul>
+    <footer class='chatContent__footer' id='chatContent__footer'>
+
     </footer>
   `
 }
-
-// ${input('message', 'text', 'Сообщение ')}
-// <button class='chatContent__controlButton' type='submit'></button>

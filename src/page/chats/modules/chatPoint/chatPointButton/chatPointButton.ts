@@ -1,30 +1,39 @@
 import { block } from "../../../../../modules/block/block";
-import { IDataChat } from "../../../../../utils/constant";
+import { IDataChatApi } from "../../../../../utils/constant";
 
 chatPointButton.prototype.block = block as ()=>void;
 
 export function chatPointButton(
-  idChat: string, { name, messeges, avatarUser, countMessegesNotRead }: IDataChat
+  id: string, { title, last_message, avatar, unread_count }: IDataChatApi
 ) {
+  let hour = '--';
+  let minute = '--';
+  if (last_message !== null && last_message?.time) {
+    hour = String(new Date(last_message?.time).getHours());
+    minute = String(new Date(last_message?.time).getMinutes());
+    hour.length <= 1 ? (hour = '0' + hour) : hour;
+    minute.length <= 1 ? (minute = '0' + minute) : minute;
+  }
 
   return `
-    <button class='chatPoint__button' id=${idChat} type='button'>
-      <img class='chatPoint__avatar' src=${avatarUser} alt='аватар'/>
+    <button class='chatPoint__button' id=${id} type='button'>
+      <img class='chatPoint__avatar' src=${avatar} alt='аватар'/>
       <article class='chatPoint__main'>
         <p class='chatPoint__heading'>
-          ${name}
+          ${title}
         </p>
         <p class='chatPoint__content'>
-          ${messeges[messeges.length - 1].text}
+          ${last_message === null ? 'пусто' : last_message?.content}
         </p>
       </article>
       <article class='chatPoint__info'>
-        <p class='chatPoint__time'>
-          ${new Date(messeges[messeges.length - 1].dateUnix * 1000).getHours()}:
-          ${new Date(messeges[messeges.length - 1].dateUnix * 1000).getMinutes()}
-        </p>
-        <p class='chatPoint__countMesNotRead'>
-          ${countMessegesNotRead}
+        <p class='chatPoint__time'>${hour + ':' + minute}</p>
+        <p
+          class=${unread_count === 0 ?
+              'chatPoint__countMesNotRead_noActiv' :
+              'chatPoint__countMesNotRead'}
+        >
+          ${unread_count}
         </p>
       </article>
       <div class='chatPoint__scroll'></div>

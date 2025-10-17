@@ -5,7 +5,7 @@ chatFormSearch.prototype.block = block as ()=>void;
 export function chatFormSearch() {
 
   return `
-    <form id='chats_searchForm'>
+    <form class='chats__searchForm' id='chats__searchForm'>
 
     </form>
   `

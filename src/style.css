@@ -21,16 +21,18 @@
 @import url("modules/inputForm/inputForm.css");
 @import url("modules/input/input.css");
 
-    /* модули чата */
-    @import url("page/chats/modules/chatsList/chatsList.css");
-    @import url("page/chats/modules/chatPoint/chatPoint.css");
-    @import url("page/chats/modules/chatContent/chatContent.css");
-    @import url("page/chats/modules/chatContent/chatMessage/chatMessage.css");
+/* модули чата */
+@import url("page/chats/modules/chatsList/chatsList.css");
+@import url("page/chats/modules/chatPoint/chatPoint.css");
+@import url("page/chats/modules/chatContent/chatContent.css");
+@import url("page/chats/modules/chatContent/chatUser/chatUserPoint/chatUserPoint.css");
+@import url("page/chats/modules/chatContent/chatMessages/chatMessages.css");
+@import url("page/chats/modules/chatContent/chatMessage/chatMessage.css");
 
-    /* модули профиля */
-    @import url("page/profile/modules/inputProfile/inputProfile.css");
-    @import url("page/profile/modules/inputAvatar/inputAvatar.css");
-    @import url("page/profile/modules/buttonProfile/buttonProfile.css");
+/* модули профиля */
+@import url("page/profile/modules/inputProfile/inputProfile.css");
+@import url("page/profile/modules/inputAvatar/inputAvatar.css");
+@import url("page/profile/modules/buttonProfile/buttonProfile.css");
 
 
 

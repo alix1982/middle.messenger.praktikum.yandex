@@ -2,69 +2,82 @@ import { login } from './login'
 import { inputForm } from '../../modules/inputForm/inputForm'
 import { button } from '../../modules/button/button'
 import { buttonLink } from '../../modules/buttonLink/buttonLink'
-import { render, setPageRender } from '../..'
 import { validationLogin, validationPassword } from '../../utils/validation'
+import { navigate } from '../../utils/routing/navigate'
+import { apiAuthLogin } from '../../api/apiRequestAuth'
 
 export function loginHtml() {
   const dataLogin = {
-    loginValue: '',
-    passValue: '',
+    login: '',
+    password: '',
+  };
+  let isValidLogin = false;
+  let isValidPass= false;
+
+  function validFormLogin() {
+    const buttonSubmitElement = document.querySelector('#submitFormLogin') as HTMLButtonElement;
+    isValidLogin = validationLogin(dataLogin.login);
+    isValidPass = validationPassword(dataLogin.password);
+    let isValidForm = isValidLogin && isValidPass
+    buttonSubmitElement.disabled = !(isValidForm);
+    return isValidForm;
   }
 
   const propsInputFormLogin = [
-    'login', 'Логин', 'Неверный логин', 'text', dataLogin.loginValue, true
+    'login', 'Логин', 'Неверный логин', 'text', dataLogin.login, true
   ]
   const propsEventInputFormLogin = {
     input: handleChangeLogin,
     blur: handleBlurLogin,
   }
   function handleChangeLogin(e: Event) {
-    e.preventDefault()
-    dataLogin.loginValue = (e.target as HTMLInputElement).value
+    e.preventDefault();
+    console.log(dataLogin)
+    dataLogin.login = (e.target as HTMLInputElement).value;
+    validFormLogin();
   }
   function handleBlurLogin(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
+    validFormLogin();
     const element = e.target as HTMLInputElement
     const errElement = element.nextElementSibling
-    const isValidate = validationLogin(element.value)
-    !isValidate
+    !isValidLogin
       ? errElement?.classList.add('inputForm__error_active')
-      : errElement?.classList.remove('inputForm__error_active')
+      : errElement?.classList.remove('inputForm__error_active');
   }
 
   const propsInputFormPass = [
-    'pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.passValue, true
+    'pass', 'Пароль', 'Неверный пароль', 'text', dataLogin.password, true
   ]
   const propsEventInputFormPass = {
     input: handleChangePass,
     blur: handleBlurPass,
   }
   function handleChangePass(e: Event) {
-    e.preventDefault()
-    dataLogin.passValue = (e.target as HTMLInputElement).value
+    e.preventDefault();
+    console.log(dataLogin)
+    dataLogin.password = (e.target as HTMLInputElement).value;
+    validFormLogin();
   }
   function handleBlurPass(e: Event) {
-    e.preventDefault()
+    e.preventDefault();
+    validFormLogin();
     const element = e.target as HTMLInputElement
     const errElement = element.nextElementSibling
-    const isValidate = validationPassword(element.value)
-    !isValidate
+    !isValidPass
       ? errElement?.classList.add('inputForm__error_active')
-      : errElement?.classList.remove('inputForm__error_active')
+      : errElement?.classList.remove('inputForm__error_active');
   }
 
-  const propsButton = ['loginButton', 'Войти', 'submit', true]
+  const propsButton = ['submitFormLogin', 'Войти', 'submit', !(isValidLogin && isValidPass), true]
   const propsEventButton = {
     click: handleSubmitFormLogin,
   }
 
   function handleSubmitFormLogin(e: Event) {
-    e.preventDefault()
-    if (dataLogin.loginValue.trim() === '1' && dataLogin.passValue.trim() === '1') {
-      setPageRender('chats')
-      render()
-    }
-    console.log(dataLogin)
+    e.preventDefault();
+    (isValidLogin && isValidPass) &&
+      apiAuthLogin(dataLogin);
   }
 
   const propsButtonLink = ['registrationButton', 'Нет аккаунта?', true]
@@ -72,8 +85,7 @@ export function loginHtml() {
     click: handleRedirectRegistration,
   }
   function handleRedirectRegistration() {
-    setPageRender('registration')
-    render()
+    navigate('/sign-up');
   }
 
   login.prototype.block('#app', [], {})
