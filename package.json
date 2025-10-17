@@ -19,7 +19,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "testM lint"
+      "pre-commit": "testM lint",
+      "pre-push": "testM lint"
     }
   },
   "devDependencies": {
