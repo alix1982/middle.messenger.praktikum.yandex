@@ -1,41 +1,14 @@
 import * as Handlebars from 'handlebars'
 import { eventBusData } from '../..'
 
-// Нельзя создавать экземпляр данного класса
-// interface IProps {
-//     heading: string,
-//     textError: string,
-//     name: string,
-//     type: string,
-//     value: string
-// }
 interface IMeta {
   tagName: string
   isAddContent: boolean
   props: string[]
   propsEvent: { [key: string]: () => void }
   propsEventBus: {}
-  // renderContent: (...arg: string[])=> string
-  //     value?: string[]
-  // }
 }
 
-// interface IEventBusData {
-//     onEvent?: (event: string, callback:()=>void) => void,
-//     offEvent?: (event: string, callback:()=>void) => void,
-//     emitEvent?: (event: string, ...args: []) => void,
-//     listeners?: {}
-// }
-// class Block {
-// const EVENTS = {
-//   INIT: 'init',
-//   FLOW_CDM: 'flow:component-did-mount',
-//   FLOW_RENDER: 'flow:render',
-//   FLOW_CDU: 'flow:component-did-update',
-// }
-// export function block(
-// tagName: string, renderContent: (...arg: string[])=> string, ...arg: string[]
-// ) {
 export function block(
   tagName: string,
   props: [],
@@ -83,11 +56,7 @@ export function block(
   function _addEventsBlock(): void {
     // console.log(element)
     const { propsEvent = {} } = meta
-    // console.log(propsEvent)
-    // console.log(props)
     Object.keys(propsEvent).forEach((eventName) => {
-      // console.log(element);
-      // console.log('----')
       if (element) {
         element.addEventListener(
           eventName as 'click' | 'change' | 'input' | 'submit', propsEvent[eventName]
@@ -95,7 +64,6 @@ export function block(
         // element.setAttribute('data-event', eventName)
       }
     })
-    // console.log('--------------------------')
   }
 
   function _registerEvents() {

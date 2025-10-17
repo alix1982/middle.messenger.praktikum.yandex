@@ -69,6 +69,14 @@ export class HTTPTransport {
     // const {method, headers, data} = options;
     const { method, data } = options
 
+    if (typeof url !== 'string' || url === '') {
+      throw new Error('error url request')
+    }
+
+    if (typeof options !== 'object' || Array.isArray(options)) {
+      throw new Error('error arguments options request')
+    }
+
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest()
 
