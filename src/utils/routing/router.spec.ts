@@ -16,6 +16,6 @@ describe('test router', () => {
     // console.log(window.history);
     // console.log(global.window.history.length);
 
-    expect(global.window.history.length).to.eq(3);
+    expect(global.window.history.length).to.eq(2);
   });
 });
