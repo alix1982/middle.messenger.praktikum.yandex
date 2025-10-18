@@ -49,9 +49,11 @@
     "path": "^0.12.7",
     "vite-plugin-handlebars": "^2.0.0"
   },
+
   "husky": {
     "hooks": {
-      "pre-commit": "testM lint"
+      "pre-commit": "npm-run-all test lint:all",
+      "pre-push": "npm run other command"
     }
   }
 }
