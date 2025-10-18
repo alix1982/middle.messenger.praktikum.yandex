@@ -33,8 +33,10 @@ export function inputAvatarHtml(idRender: string) {
         textAvatarElement.classList.add('inputAvatar__messege_error')
       });
     const avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement
-    const avatar = JSON.parse(localStorage.getItem('dataUser') as string).avatar
+    const avatar = JSON.parse(localStorage.getItem('dataUser') as string)?.avatar
     avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): avatarDefault
+    // avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): ''
+
     textAvatarElement.textContent = textFormAvatar
     timerTextFormAvatar()
   }
@@ -51,8 +53,9 @@ export function inputAvatarHtml(idRender: string) {
     textAvatarElement = document.querySelector('.inputAvatar__messege') as HTMLElement
 
     const avatarElement = document.querySelector('.inputAvatar__img') as HTMLImageElement
-    const avatar = JSON.parse(localStorage.getItem('dataUser') as string).avatar
+    const avatar = JSON.parse(localStorage.getItem('dataUser') as string)?.avatar
     avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): avatarDefault
+    // avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): ''
   }
 
   renderAvatar();

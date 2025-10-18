@@ -5,12 +5,15 @@
         "noUnusedParameters": true,
         "sourceMap": true,
         "strictNullChecks": true,
-        "target": "es2015",
-        "lib": ["es2015", "dom"],
-        "moduleResolution": "node"
+        "target": "es2020",
+        "moduleResolution": "node",
+        "module": "ESNext",
+        "allowSyntheticDefaultImports": true,
+        "lib": ["es2020", "dom"]
     },
     "include": [
-        "src",
-        "declaration.d.ts"
+        "src/**/*.ts",
+        "declaration.d.ts",
+        "src/**/*.spec.ts"
     ]
 }

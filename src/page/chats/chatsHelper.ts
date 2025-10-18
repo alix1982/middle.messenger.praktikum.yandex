@@ -15,7 +15,16 @@ import { chatMessages } from "./modules/chatContent/chatMessages/chatMessages";
 // import { chatUsers } from "./modules/chatContent/chatUser/chatUser";
 import { chatUsersPoint } from "./modules/chatContent/chatUser/chatUserPoint/chatUserPoint";
 
-let userId = JSON.parse(localStorage.getItem('dataUser') as string)?.id;
+// const dataUser = localStorage.getItem('dataUser') !== null ?
+//   JSON.parse(localStorage.getItem('dataUser') as string) :
+//   {
+//     id: ''
+//   };
+// let userId = dataUser.id
+const userId = localStorage.getItem('dataUser') !== null ?
+  JSON.parse(localStorage.getItem('dataUser') as string)?.id :
+  '0';
+// let userId = '4545'
 let idChatSelected = '';
 let idChat = 0;
 // let inputSearchValue = '';

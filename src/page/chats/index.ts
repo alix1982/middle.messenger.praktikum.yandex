@@ -7,7 +7,9 @@ import { chatFormSearch } from './modules/chatFormSearch/chatFormSearch'
 import { chatPoint } from './modules/chatPoint/chatPoint'
 import { chatPointButton } from './modules/chatPoint/chatPointButton/chatPointButton'
 import { navigate } from '../../utils/routing/navigate'
-import { apiMessageChats, apiMessageCreateChat } from '../../api/apiRequestMessage'
+import
+  { apiMessageChats, apiMessageCreateChat }
+  from '../../api/apiRequestMessage'
 import { IDataChatApi } from '../../utils/constant'
 import { openMessege } from './chatsHelper'
 
