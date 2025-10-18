@@ -12,6 +12,9 @@ describe('test router', () => {
     // navigate('/settings');
     // navigate('/settings');
 
+console.log('ok')
+
+
     // routerBack();
     // console.log(window.history);
     // console.log(global.window.history.length);
