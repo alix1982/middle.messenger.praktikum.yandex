@@ -3,8 +3,6 @@ import { expect } from "chai";
 import { HTTPTransport } from "./api";
 // import { BASE_URL } from "../utils/constant";
 // import Sinon from "sinon";
-// import { Footer } from "./Footer";
-// import { Link } from "../link/Link";
 
 // function hello(str: string) {
 //   return ('Hello' + str)
