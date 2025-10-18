@@ -14,7 +14,7 @@ describe('test router', () => {
 
 console.log('ok')
 
-
+console.log('ok')
     // routerBack();
     // console.log(window.history);
     // console.log(global.window.history.length);
