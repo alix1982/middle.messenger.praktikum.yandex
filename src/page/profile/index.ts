@@ -123,8 +123,10 @@ export function profileHtml() {
     renderButton();
 
     const avatarElement = document.querySelector('.profile__avatar') as HTMLImageElement;
-    const avatar = JSON.parse(localStorage.getItem('dataUser') as string).avatar
+    const avatar = JSON.parse(localStorage.getItem('dataUser') as string)?.avatar
     avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): avatarDefault
+    // avatarElement.src = avatar !== null ? (BASE_URL + '/resources' + avatar ): ''
+
     // BASE_URL + '/resources' + JSON.parse(localStorage.getItem('dataUser') as string).avatar;
 
     profilePage === 'fixData' && inputAvatarHtml('profile__formAvatar')
