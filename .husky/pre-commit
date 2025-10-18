@@ -1,2 +1,2 @@
 # sdfs
-npm run check // [!code hl]
+npm run test // [!code hl]
