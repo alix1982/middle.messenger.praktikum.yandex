@@ -1,4 +1,3 @@
-// @ts-nocheck
 // import { input } from "../input/input";
 // import { block } from "./block"
 
