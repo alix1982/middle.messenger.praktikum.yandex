@@ -47,6 +47,6 @@
     "@babel/register": "^7.28.3",
     "handlebars": "^4.7.8",
     "path": "^0.12.7",
-    "vite-plugin-handlebars": "^2.0.0"
+    "vite-plugin-handlebars": "^1.5.0"
   }
 }
