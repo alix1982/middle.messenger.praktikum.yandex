@@ -14,7 +14,7 @@
     "lintEs": "eslint .",
     "lintSt": "npx stylelint '**/*.css'",
     "lint": "npm run lintEs && npm run lintSt",
-    "test": "npm run lint && npm run testM",
+    "check": "npm run lint && npm run testM",
     "testM": "mocha",
     "prepare": "husky install"
   },
